@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://kutty.netlify.app/build.css">
+
+    <title>{% block head_title %} {% endblock %}</title>
+    {% block extra_head %} {% endblock %}
+  </head>
+  <body>
+    {% if  user.is_authenticated %}
+      {% if not user.emailaddress_set.all.0.verified and not status %}
+      <div class="w-full text-white bg-yellow-400" id="revr">
+        <div class="container flex items-center justify-between px-6 py-4 mx-auto">
+            <div class="flex">
+                <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
+                    <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z">
+                    </path>
+                </svg>
+
+                <p class="mx-3">Verify Your Email Address. We have sent an email to you for verification. Follow the link provided to finalize the signup process. If you do not see the verification email in your main inbox, check your spam folder. Please contact us if you do not receive the verification email within a few minutes.
+                  <form action="{% url 'Verification-again' %}" method="post" name="resendVerification" class="email_list">
+                    {% csrf_token %}
+                     <input style="display:none" type="text" name="email" value="{{user.email}}" readonly>
+                    <button class="btn-auth" type="submit" name="action_send">Re-send Verification</button>
+                  </form>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                  
+                </p>
+            </div>
+
+            <button class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none" id="closere" onclick="remove_me()">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <script>
+              function remove_me(){
+                const element = document.getElementById("revr");
+                element.remove();
+                }
+              
+            </script>
+        </div>
+      </div>
+
+      {% endif %}
+    {% endif %}
+
+
+    {% block content %} {% endblock %}
+    {{status}}
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </body>
+</html>
