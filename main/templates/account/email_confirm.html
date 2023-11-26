@@ -1,128 +1,162 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 {% load account %}
-
-{% block head_title %}{% trans "Confirm Email Address" %}{% endblock head_title %}
-
+{% load static %}
+{% block head_title %}{{'Ziko Ai | Confirm Email Address'}}{% endblock %}
 
 {% block content %}
+{% include "component/nav.html" %}
 
+<div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px]">
+    <div class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke to-stroke/0 absolute left-0 bottom-0">
+    </div>
+    <div class="container">
+      <div class="-mx-4 flex flex-wrap items-center">
+        <div class="w-full px-4">
+          <div class="text-center">
+            <h1 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px] md:leading-[1.2]">Confirm Email Address</h1>
+            <p class="mb-5 text-base text-body-color">
 
-{% if confirmation %}
+            </p>
 
-    {% user_display confirmation.email_address.user as user_display %}
-
-
-    {% if can_confirm %}
-        <div  class="relative flex justify-center">
-            
-
-            <div  class="fixed inset-0 z-10 overflow-y-auto"  aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            
-                    <div class="relative inline-block p-4 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl sm:max-w-sm rounded-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:p-6">
-                        <div class="flex items-center justify-center mx-auto">
-                            <img class="h-full rounded-lg" src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
-                        </div>
-
-                        <div class="mt-5 text-center mb-5">
-                            <h3 class="text-lg font-medium text-gray-800 dark:text-white" id="modal-title">
-                                Confirm Emails Address
-                            </h3>
-
-                            <p class="mt-2 text-gray-500 dark:text-gray-400">
-                                Please confirm that <strong>{{ email }}</strong> is an email address for user <strong>{{ user_display }}</strong>.
-                            </p>
-                        </div>
-
-
-
-
-                            <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
-                                {% csrf_token %}
-                                <button type="submit" class="px-4 sm:mx-2 w-full py-2.5 mt-3 sm:mt-0 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40">{% trans 'Confirm' %}</button>
-                            </form>
-                            
-                        
-                    </div>
-                </div>
-            </div>
+            <ul class="flex items-center justify-center gap-[10px]">
+              <li>
+                
+              </li>
+              <li>
+                  
+              </li>
+            </ul>
+          </div>
         </div>
-    {% elif  user.emailaddress_set.all.0.verified %} 
+      </div>
+    </div>
+</div>
+<section class="bg-gray-1 pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark">
+    <div class="container">
+      <div class="-mx-4 flex flex-wrap justify-center">
+        <div class="w-full px-4">
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4">
+                    <div>
+                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                            <div class="wow fadeInUp p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                                <div class="max-w-xl">
+                                    <section>
+                                        
+                                        {% if confirmation %}
 
-        <div  class="relative flex justify-center">
-            
+                                            {% user_display confirmation.email_address.user as user_display %}
 
-            <div  class="fixed inset-0 z-10 overflow-y-auto"  aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            
-                    <div class="relative inline-block p-4 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl sm:max-w-sm rounded-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:p-6">
-                        <div class="flex items-center justify-center mx-auto">
-                            <img class="h-full rounded-lg" src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+
+                                            {% if can_confirm %}
+                                                <header>
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Confirm Emails Address
+                                                    </h2>
+                                            
+                                                    <p class="mb-6 mt-1 text-sm text-gray-600">
+                                                        Please confirm that <strong>{{ email }}</strong> is an email address for user <strong>{{ user_display }}</strong>.
+                                                    </p>
+                                                </header>
+                                                <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                                                    {% csrf_token %}
+                                                    <div class="flex items-center gap-4">
+                                                        <button type="submit"  name="action" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pr-2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+                                                            </svg>
+                                                            
+                                                            <span>{% trans 'Confirm' %}</span>
+                                                        </button>
+                                            
+                                                    </div>
+                                                </form>
+                                            
+                                            
+                                                
+
+                                            {% endif %}
+
+
+
+                                        {% else %}
+                                            {% if  user.emailaddress_set.all.0.verified %} 
+                                                <header>
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Confirm Emails Address
+                                                    </h2>
+                                            
+                                                    <p class="mb-6 mt-1 text-sm text-gray-600">
+                                                        Unable to confirm <strong>{{ email }}</strong> because it is already confirmed by a different account.
+                                                    </p>
+                                                </header>
+
+                                            {% else %}
+                                            
+                                                <header>
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Confirm Emails Address
+                                                    </h2>
+                                            
+                                                    <p class="mb-6 mt-1 text-sm text-gray-600">
+                                                        This email confirmation link expired or is invalid. Please issue a new email confirmation request.
+                                                    </p>
+                                                </header>
+                                                <form action="{% url 'Verification-again' %}" method="post" name="resendVerification" class="email_list">
+                                                    {% csrf_token %}
+                                                    <input style="display:none"type="hidden" name="email" value="{{user.email}}">
+                                                    <div class="flex items-center gap-4">
+                                                        <button type="submit" name="action_send" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pr-2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+                                                            </svg>
+                                                            
+                                                            <span>{% trans 'Re-send Verification' %}</span>
+                                                        </button>
+                                            
+                                                    </div>
+                                                </form>
+                                                     
+
+                                           
+                                            {% endif %}
+                                        {% endif %}
+
+
+                                    </section>
+                                    
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="mt-5 text-center mb-5">
-
-
-                            <p class="mt-2 text-gray-500 dark:text-gray-400">
-
-                                Unable to confirm <strong>{{ email }}</strong> because it is already confirmed by a different account.
-                            </p>
-                        </div>
-
-
-
-                            
-                        
                     </div>
                 </div>
             </div>
-        </div>
 
-    {% endif %}
-
-
-
-{% else %}
-
-    <div  class="relative flex justify-center">
-        
-
-        <div  class="fixed inset-0 z-10 overflow-y-auto"  aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        
-                <div class="relative inline-block p-4 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl sm:max-w-sm rounded-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:p-6">
-                    <div class="flex items-center justify-center mx-auto">
-                        <img class="h-full rounded-lg" src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
-                    </div>
-
-                    <div class="mt-5 text-center mb-5">
-                        <h3 class="text-lg font-medium text-gray-800 dark:text-white" id="modal-title">
-                            Confirm Emails Address
-                        </h3>
-
-                        <p class="mt-2 text-gray-500 dark:text-gray-400">
-                            This email confirmation link expired or is invalid. Please issue a new email confirmation request.
-                        </p>
-                    </div>
-
-                        <form action="{% url 'Verification-again' %}" method="post" name="resendVerification" class="email_list">
-                            {% csrf_token %}
-                            <input style="display:none"type="hidden" name="email" value="{{user.email}}">
-                            <button class="px-4 sm:mx-2 w-full py-2.5 mt-3 sm:mt-0 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40" type="submit" name="action_send">Re-send Verification</button>
-                        </form>                    
-
-                </div>
-            </div>
         </div>
     </div>
 
-{% endif %}
+
+    </div>
+</section>
 
 
 
+
+
+{% include "component/footer.html" %}
+<!-- ====== Footer Section End -->
+
+<!-- ====== Back To Top Start -->
+<!-- ====== Back To Top Start -->
+<a href="javascript:void(0)"
+class="back-to-top fixed bottom-8 right-8 left-auto z-[999] hidden h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:bg-dark">
+<span class="mt-[6px] h-3 w-3 rotate-45 border-t border-l border-white"></span>
+</a>
+<!-- ====== Back To Top End -->
+
+
+<!-- ====== All Scripts -->
+<script src="{% static 'main/assets/js/main.js' %}"></script>
 {% endblock content %}

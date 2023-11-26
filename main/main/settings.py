@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "dal_select2",
 
     # admin theme
-    "unfold",
+    # "unfold",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # apps
     'accounts',
     'payment',
+    'app',
 
     # The following apps are required:
     'allauth',
@@ -67,8 +68,11 @@ INSTALLED_APPS = [
     "taggit",
     "lotus",
 
+    # theme
+    # 'tailwind',
+    # 'theme',
 ]
-
+# TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -188,8 +192,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media', )
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-TAILWIND_APP_NAME = 'theme'
-
 # INTERNAL_IPS = [
 #     "127.0.0.1",
 # ]
@@ -197,6 +199,10 @@ TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
 ACCOUNT_EMAIL_REQUIRED = True  # new
+
+ACCOUNT_LOGOUT_ON_GET = True
+
+ACCOUNT_LOGOUT_REDIRECT_URL = 'https://www.ziko.ai/'
 
 ACCOUNT_EMAIL_VERIFICATION = 'optional'  # mandatory optional
 
@@ -268,9 +274,13 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "Ziko Ai Support <support@ziko.ai>"
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51MQdxFJTQfFPcbL73Est7Xj7YaIU1WskNRGRkB9wIWjfT3kac90JpPd52orxov0EGKxZGmirY1Cd1iu5DpGkqmWA0063hdAQUd'
-STRIPE_SECRET_KEY = 'sk_test_51MQdxFJTQfFPcbL7ta7i4KQKW9hneN03pKLGEPWM0ire1UppxL96mZLeuEuLAWyhtqiOirGWF9n0I0txFShZ6TCu00dhtrr89F'
+# test
+# STRIPE_PUBLISHABLE_KEY = 'pk_test_51MQdxFJTQfFPcbL73Est7Xj7YaIU1WskNRGRkB9wIWjfT3kac90JpPd52orxov0EGKxZGmirY1Cd1iu5DpGkqmWA0063hdAQUd'
+# STRIPE_SECRET_KEY = 'sk_test_51MQdxFJTQfFPcbL7ta7i4KQKW9hneN03pKLGEPWM0ire1UppxL96mZLeuEuLAWyhtqiOirGWF9n0I0txFShZ6TCu00dhtrr89F'
 
+
+STRIPE_PUBLISHABLE_KEY = 'pk_live_51MQdxFJTQfFPcbL7perO2kRJn906Ol0n56DgKzJwrBmq75tGPcXrVVtLJQGBJrSnaCm93vonAJXBotRNnEczdOuk00MreOVa3Y'
+STRIPE_SECRET_KEY = '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'
 
 STRIPE_ENDPOINT_SECRET = 'whsec_xgUzgbB7V0YszaKMsGS2nIAYX6zWl3zf'
 DOMAIN_URL = 'https://www.ziko.ai/'

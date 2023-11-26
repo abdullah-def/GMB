@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from allauth.account.models import EmailAddress
 from allauth.account.utils import send_email_confirmation
 from payment.models import Product, StripeCustomer
@@ -10,8 +10,14 @@ from datetime import datetime
 
 
 def home(request):
+    if request.user.is_authenticated:
+        return redirect('app')
+    else:
+        stripe_list = Product.objects.all()
 
-    return render(request, 'main/index.html')
+        return render(request, 'main/index.html', {
+            'product_list': stripe_list
+        })
 
 
 def about(request):

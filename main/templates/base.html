@@ -1,42 +1,40 @@
-{% load static %}
-{% load  lotus %}
+{% load static %} 
+{% load lotus %}
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" x-data="data()">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     {% block metas %}{% endblock metas %}
 
-
     <link rel="shortcut icon" href="{% static 'main/assets/images/favicon.png' %}" type="image/x-icon" />
     <link rel="stylesheet" href="{% static 'main/assets/css/swiper-bundle.min.css' %}" />
     <link rel="stylesheet" href="{% static 'main/assets/css/animate.css' %}" />
+    <link rel="stylesheet" href="https://kutty.netlify.app/build.css">
     <link rel="stylesheet" href="{% static 'main/assets/css/tailwind.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/assets/css/tailwind1.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'app/assets/css/tailwind2.css' %}" /> -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer ></script>
+    <script src="{% static 'app/assets/js/init-alpine.js' %}"></script>
 
-    
-    
     <script src="{% static 'main/assets/js/wow.min.js' %}"></script>
-    <script>
-      new WOW().init();
-    </script>
-    
+    <script> new WOW().init(); </script>
 
     <title>{% block head_title %} {% endblock %}</title>
     {% block extra_head %} {% endblock %}
   </head>
   <body>
+    {% block content %} 
     
-
-
-    {% block content %} {% endblock %}
-
-    {% block blog-content %} {% endblock %}
-
-
-
-   
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {% endblock %} 
+    
+    {% block blog-content %} 
+    
+    {% endblock %}
+<!-- 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" ></script> -->
+    
   </body>
 </html>

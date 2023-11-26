@@ -9,6 +9,12 @@ register = Library()
 
 
 @register.simple_tag
+def update_variable(value):
+    """Allows to update existing variable in template"""
+    return value
+
+
+@register.simple_tag
 def show_algorithms():
     a = Article.objects.all()[:2]
     return a

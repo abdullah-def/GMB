@@ -363,15 +363,19 @@
 {% if subscription.status == "active" %}
 <h4>Your subscription:</h4>
 <div class="card" style="width: 18rem">
-  <div class="card-body" style="
-  width: 351px;
-">
+  <div class="card-body" style="width: 351px">
     <h5 class="card-title">{{ product.name }}</h5>
     <p class="card-text">start = {{ subscription.current_period_start }}</p>
     <p class="card-text">end = {{ subscription.current_period_end }}</p>
-    <p class="card-text">collection method = {{ subscription.collection_method }}</p>
-    <p class="card-text">amount = {{ subscription.items.data.0.plan.amount }} cent</p>
-    <p class="card-text">interval = {{ subscription.items.data.0.plan.interval }}</p>
+    <p class="card-text">
+      collection method = {{ subscription.collection_method }}
+    </p>
+    <p class="card-text">
+      amount = {{ subscription.items.data.0.plan.amount }} cent
+    </p>
+    <p class="card-text">
+      interval = {{ subscription.items.data.0.plan.interval }}
+    </p>
   </div>
 </div>
 {% else %}

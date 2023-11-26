@@ -12,8 +12,6 @@ from django.views.decorators.csrf import csrf_exempt
 from . models import StripeCustomer  # new
 
 
-
-
 @login_required
 def success(request):
     return render(request, 'payment/success.html')
@@ -27,13 +25,14 @@ def cancel(request):
 @login_required
 def create_checkout_session(request):
     if request.method == 'POST':
-  
+
         domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
-                success_url=domain_url + 'payment/success?session_id={CHECKOUT_SESSION_ID}',
+                success_url=domain_url +
+                'payment/success?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=domain_url + 'payment/cancel/',
                 payment_method_types=['card'],
                 mode='subscription',
@@ -47,7 +46,11 @@ def create_checkout_session(request):
             return redirect(checkout_session.url)
         except Exception as e:
             return JsonResponse({'error': str(e)})
-        
+
+    else:
+        return redirect('home')
+
+
 @csrf_exempt
 def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -62,10 +65,10 @@ def stripe_webhook(request):
         )
     except ValueError as e:
         # Invalid payload
-        return HttpResponse(request,status=400)
+        return HttpResponse(request, status=400)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
-        return HttpResponse(request,status=400)
+        return HttpResponse(request, status=400)
 
     # Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
@@ -85,4 +88,4 @@ def stripe_webhook(request):
         )
         print(user.username + ' just subscribed.')
 
-    return HttpResponse(request,status=200)
+    return HttpResponse(request, status=200)

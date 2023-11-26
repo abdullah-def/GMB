@@ -18,7 +18,7 @@
       <div class="-mx-4 flex flex-wrap items-center">
         <div class="w-full px-4">
           <div class="text-center">
-            <h1 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px] md:leading-[1.2]">Sign In Page</h1>
+            <h1 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px] md:leading-[1.2]">Sign In</h1>
             <p class="mb-5 text-base text-body-color">
               Welcome back
             </p>
@@ -55,8 +55,35 @@
                 <img src="{% static 'main/assets/images/logo/logo.svg' %}" alt="logo" />
               </a>
             </div>
+            
+
+
 
             
+
+            {% if form.errors %}
+
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="rounded-lg bg-red-light-6 px-[18px] py-4 shadow-[0px_2px_10px_0px_rgba(0,0,0,0.08)] mb-[22px]" >
+                          <p class="flex items-center text-sm font-medium text-[#BC1C21]">
+                            
+                            {{ error|escape }}
+                          </p>
+                        </div>
+                        
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                  <div class="rounded-lg bg-red-light-6 px-[18px] py-4 shadow-[0px_2px_10px_0px_rgba(0,0,0,0.08)] mb-[22px]" >
+                    <p class="flex items-center text-sm font-medium text-[#BC1C21]">
+                      
+                      {{ error|escape }}
+                    </p>
+                  </div>
+                {% endfor %}
+
+            {% endif %}
             <form method="POST" action="{% url 'account_login' %}">
               {% csrf_token %}
               {% if redirect_field_value %}
@@ -175,7 +202,7 @@
     </div>
   </section>
   <!-- ====== Forms Section End -->
-
+  
   <!-- ====== Footer Section Start -->
   {% include "component/footer.html" %}
   <!-- ====== Footer Section End -->
