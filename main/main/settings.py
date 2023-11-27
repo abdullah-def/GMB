@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "dal_select2",
 
     # admin theme
-    # "unfold",
+    "unfold",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
