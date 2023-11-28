@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="{% static 'main/assets/css/tailwind.css' %}" />
     <link rel="stylesheet" href="{% static 'main/assets/css/tailwind1.css' %}" />
 
-    <script src="{% static 'main/assets/js/alpine.min.js' %}" defer ></script>
-    <script src="{% static 'app/assets/js/init-alpine.js' %}"></script>
+    
 
     <script src="{% static 'main/assets/js/wow.min.js' %}"></script>
     <script> new WOW().init(); </script>
+    
 
     <title>{% block head_title %} {% endblock %}</title>
     {% block extra_head %} {% endblock %}
@@ -34,6 +34,8 @@
     
     {% endblock %}
 
-    
+
+    <script src="{% static 'main/assets/js/alpine.min.js' %}" defer ></script>
+    <script src="{% static 'app/assets/js/init-alpine.js' %}"></script>
   </body>
 </html>
