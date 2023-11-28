@@ -90,6 +90,7 @@ MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
 ]
 
+
 #  blog
 LANGUAGE_CODE = "en"
 

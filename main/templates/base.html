@@ -12,11 +12,11 @@
     <link rel="shortcut icon" href="{% static 'main/assets/images/favicon.png' %}" type="image/x-icon" />
     <link rel="stylesheet" href="{% static 'main/assets/css/swiper-bundle.min.css' %}" />
     <link rel="stylesheet" href="{% static 'main/assets/css/animate.css' %}" />
-    <link rel="stylesheet" href="https://kutty.netlify.app/build.css">
+    <link rel="stylesheet" href="{% static 'main/assets/css/build.css' %}" />
     <link rel="stylesheet" href="{% static 'main/assets/css/tailwind.css' %}" />
     <link rel="stylesheet" href="{% static 'main/assets/css/tailwind1.css' %}" />
-    <!-- <link rel="stylesheet" href="{% static 'app/assets/css/tailwind2.css' %}" /> -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer ></script>
+
+    <script src="{% static 'main/assets/js/alpine.min.js' %}" defer ></script>
     <script src="{% static 'app/assets/js/init-alpine.js' %}"></script>
 
     <script src="{% static 'main/assets/js/wow.min.js' %}"></script>
@@ -33,8 +33,7 @@
     {% block blog-content %} 
     
     {% endblock %}
-<!-- 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" ></script> -->
+
     
   </body>
 </html>
