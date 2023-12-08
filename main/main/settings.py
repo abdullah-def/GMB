@@ -285,3 +285,4 @@ STRIPE_SECRET_KEY = 'sk_live_51MQdxFJTQfFPcbL7H5HJ8YZZ31IbaVTRaTfIsFSkOthfv60zGz
 
 STRIPE_ENDPOINT_SECRET = 'whsec_xgUzgbB7V0YszaKMsGS2nIAYX6zWl3zf'
 DOMAIN_URL = 'https://www.ziko.ai/'
+Site = 'Ziko'

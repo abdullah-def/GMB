@@ -28,11 +28,14 @@ urlpatterns = [
 
 
 
-    path('How-it-works/', views.How_it_works, name="How-it-works"),
+    path('how-it-works/', views.How_it_works, name="How-it-works"),
     path('privacy-policy/', views.privacy, name="privacy-policy"),
     path('terms-of-service/', views.terms, name="terms-of-service"),
     path('refund-policy/', views.refund, name="refund-policy"),
+    path('features/', views.features, name="features"),
+    path('knowledgebase/', views.knowledgebase, name="knowledgebase"),
 
+    path('ticket/', views.ticket, name="ticket"),
     path('verification-again/', views.verification_email,
          name='Verification-again'),
     path('accounts/', include('allauth.urls')),

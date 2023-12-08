@@ -597,6 +597,7 @@ class ResetPasswordForm(forms.Form):
     def _send_password_reset_mail(self, request, email, users, **kwargs):
         token_generator = kwargs.get("token_generator", default_token_generator)
 
+
         for user in users:
             temp_key = token_generator.make_token(user)
 
@@ -613,7 +614,7 @@ class ResetPasswordForm(forms.Form):
             url = build_absolute_uri(request, path)
 
             context = {
-                "current_site": get_current_site(request),
+                "current_site": Site,
                 "user": user,
                 "password_reset_url": url,
                 "uid": uid,

@@ -6,6 +6,10 @@ from django.http.response import JsonResponse
 import stripe
 from django.conf import settings
 from datetime import datetime
+from lotus.models import Article
+
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -14,11 +18,18 @@ def home(request):
         return redirect('app')
     else:
         stripe_list = Product.objects.all()
+        artical = Article.objects.all()[:3]
 
         return render(request, 'main/index.html', {
-            'product_list': stripe_list
+            'product_list': stripe_list,
+            'article_list':artical
         })
 
+def features(request):
+    return render(request, 'main/features.html')
+
+def knowledgebase(request):
+    return render(request, 'main/knowledgebase.html')
 
 def about(request):
 
@@ -123,3 +134,32 @@ def verification_email(request, *args, **kwargs):
             return render(request, "index.html", content)
 
     return render(request, "index.html")
+
+
+
+def ticket(request, *args, **kwargs):
+    if request.POST:
+
+        email_me = 'support@ziko.ai'
+
+        full_name=request.POST["full_name"]
+        Email=request.POST["email"]
+        Phone=request.POST["phone"]
+        Message=request.POST["message"]
+
+        subject = 'This is a ticket created by the customer'
+        
+        full_mess = f"""
+
+Full name : {full_name}
+Email : {Email}
+Phone : {Phone}
+Message : {Message}
+"""
+        email_from = email_me
+        recipient_list = ['support@ziko.ai', ]
+        send_mail( subject, full_mess, email_from, recipient_list )
+
+        return redirect('home')
+    else:
+        return redirect('home')

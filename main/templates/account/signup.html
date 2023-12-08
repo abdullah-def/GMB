@@ -3,6 +3,9 @@
 {% load socialaccount %} 
 {% load static %}
 {% block head_title %}{{'Ziko Ai | Sign up'}}{% endblock %}
+{% block extra_head %}
+<meta name="description" content="Ziko signup page.">
+{% endblock %}
 
 {% block content %}
   <!-- ====== Navbar Section Start -->
@@ -10,26 +13,31 @@
   <!-- ====== Navbar Section End -->
 
   <!-- ====== Banner Section Start -->
-  <div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px]">
-    <div class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke to-stroke/0 absolute left-0 bottom-0">
+
+  <div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px] dark:bg-dark">
+    <div
+      class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke dark:via-dark-3 to-stroke/0 absolute left-0 bottom-0">
     </div>
     <div class="container">
       <div class="-mx-4 flex flex-wrap items-center">
         <div class="w-full px-4">
           <div class="text-center">
-            <h1 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px] md:leading-[1.2]">Sign Up </h1>
-            <p class="mb-5 text-base text-body-color">
-              Complete the form to Sign Up or Sign Up with Google
+            <h1 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
+              Sign Up</h1>
+            <p class="mb-5 text-base text-body-color dark:text-dark-6">
+              Complete the form to Sign Up or Sign Up with Google.
             </p>
 
             <ul class="flex items-center justify-center gap-[10px]">
               <li>
-                <a href="{% url 'home' %}" class="flex items-center gap-[10px] text-base font-medium text-dark">
+                <a href="{% url 'home' %}"
+                  class="flex items-center gap-[10px] text-base font-medium text-dark dark:text-white">
                   Home
                 </a>
               </li>
               <li>
-                  <span class="text-body-color"> / </span>
+                <a href="" class="flex items-center gap-[10px] text-base font-medium text-body-color">
+                  <span class="text-body-color dark:text-dark-6"> / </span>
                   Sign Up
                 </a>
               </li>
@@ -42,24 +50,19 @@
   <!-- ====== Banner Section End -->
 
   <!-- ====== Forms Section Start -->
-  <section class="bg-[#F4F7FF] py-14 lg:py-[90px]">
+  <section class="bg-[#F4F7FF] py-14 lg:py-[90px] dark:bg-dark">
     <div class="container">
       <div class="-mx-4 flex flex-wrap">
         <div class="w-full px-4">
           <div
-            class="wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-xl shadow-form bg-white py-14 px-8 text-center sm:px-12 md:px-[60px]"
+            class="wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-xl shadow-form bg-white dark:bg-dark-2 py-14 px-8 text-center sm:px-12 md:px-[60px]"
             data-wow-delay=".15s">
             <div class="mb-10 text-center">
               <a href="{% url 'home' %}" class="mx-auto inline-block max-w-[160px]">
-                <img src="{% static 'main/assets/images/logo/logo.svg' %}" alt="logo" />
+                <img src="{% static 'main/assets/images/logo/logo.svg' %}" alt="logo" class="dark:hidden" />
+                <img src="{% static 'main/assets/images/logo/logo-white.svg' %}" alt="logo" class="hidden dark:block" />
               </a>
             </div>
-            
-
-
-
-
-
             
               
             {% if form.errors %}
@@ -90,31 +93,31 @@
               <!-- first name -->
               <div class="mb-[22px]">
                 <input type="text" placeholder="First Name" name="first_name" required id="first_name"
-                  class="border-stroke w-full rounded-md border py-3 px-5 text-base text-body-color placeholder:text-dark-6 outline-none transition focus:border-primary focus-visible:shadow-none" />
+                class="border-stroke dark:border-dark-3 bg-transparent w-full rounded-md border py-3 px-5 text-base text-body-color dark:text-dark-6 placeholder:text-dark-6 outline-none transition focus:border-primary dark:focus:border-primary focus-visible:shadow-none" />
               </div>
 
               <!-- sec name -->
               <div class="mb-[22px]">
                 <input type="text" placeholder="Last Name" name="last_name" required id="last_name"
-                  class="border-stroke w-full rounded-md border py-3 px-5 text-base text-body-color placeholder:text-dark-6 outline-none transition focus:border-primary focus-visible:shadow-none" />
+                class="border-stroke dark:border-dark-3 bg-transparent w-full rounded-md border py-3 px-5 text-base text-body-color dark:text-dark-6 placeholder:text-dark-6 outline-none transition focus:border-primary dark:focus:border-primary focus-visible:shadow-none" />
               </div>
               
               <!-- email -->
               <div class="mb-[22px]">
                 <input type="email" name="email" placeholder="Email address" required id="id_email" autocomplete="email" 
-                  class="border-stroke w-full rounded-md border py-3 px-5 text-base text-body-color placeholder:text-dark-6 outline-none transition focus:border-primary focus-visible:shadow-none" />
+                class="border-stroke dark:border-dark-3 bg-transparent w-full rounded-md border py-3 px-5 text-base text-body-color dark:text-dark-6 placeholder:text-dark-6 outline-none transition focus:border-primary dark:focus:border-primary focus-visible:shadow-none" />
               </div>
 
               <!-- pass -->
               <div class="mb-[22px]">
                 <input type="password" name="password1" placeholder="Password" autocomplete="new-password" required="" id="id_password1"
-                  class="border-stroke w-full rounded-md border py-3 px-5 text-base text-body-color placeholder:text-dark-6 outline-none transition focus:border-primary focus-visible:shadow-none" />
+                class="border-stroke dark:border-dark-3 bg-transparent w-full rounded-md border py-3 px-5 text-base text-body-color dark:text-dark-6 placeholder:text-dark-6 outline-none transition focus:border-primary dark:focus:border-primary focus-visible:shadow-none" />
               </div>
 
               <!-- conf pass -->
               <div class="mb-[22px]">
                 <input type="password" name="password2" placeholder="Confirm Password" required id="id_password2"
-                  class="border-stroke w-full rounded-md border py-3 px-5 text-base text-body-color placeholder:text-dark-6 outline-none transition focus:border-primary focus-visible:shadow-none" />
+                class="border-stroke dark:border-dark-3 bg-transparent w-full rounded-md border py-3 px-5 text-base text-body-color dark:text-dark-6 placeholder:text-dark-6 outline-none transition focus:border-primary dark:focus:border-primary focus-visible:shadow-none" />
               </div>
 
               <!-- submit -->
@@ -128,9 +131,10 @@
             </form>
 
             <span class="relative z-1 block text-center mb-7">
-              <span class="block absolute -z-1 left-0 top-1/2 h-px w-full bg-stroke"></span>
-              <span class="inline-block px-3 bg-white text-base text-body-secondary relative z-10">Connect With</span>
+              <span class="block absolute -z-1 left-0 top-1/2 h-px w-full bg-stroke dark:bg-dark-3"></span>
+              <span class="inline-block px-3 bg-white dark:bg-dark-2 text-base text-body-secondary relative z-10">Connect With</span>
             </span>
+
             <ul class="-mx-2 mb-9 flex justify-between">
 
               <li class="w-full px-2">
@@ -147,14 +151,17 @@
 
             </ul>
 
+           
+
+
             <p class="mb-4 text-base text-body-secondary">
               By creating an account you are agree with our
               <a href="{% url 'privacy-policy' %}" class="text-primary hover:underline">
-                Privacy policy
+                Privacy
               </a>
               and
               <a href="{% url 'terms-of-service' %}" class="text-primary hover:underline">
-                Terms of service
+                Policy
               </a>
             </p>
 
@@ -234,16 +241,5 @@
   {% include "component/footer.html" %}
   <!-- ====== Footer Section End -->
 
-  <!-- ====== Back To Top Start -->
-  <a href="javascript:void(0)"
-    class="back-to-top fixed bottom-8 right-8 left-auto z-[999] hidden h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:bg-dark">
-    <span class="mt-[6px] h-3 w-3 rotate-45 border-t border-l border-white"></span>
-  </a>
-  <!-- ====== Back To Top End -->
 
-
-  <!-- ====== Made With Button End -->
-
-  <!-- ====== All Scripts -->
-  <script src="{% static 'main/assets/js/main.js' %}"></script>
 {% endblock %}
