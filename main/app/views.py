@@ -5,28 +5,58 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 from payment.models import Product, StripeCustomer
-from accounts.models import Profile
+from accounts.models import Profile, test
 from allauth.account.forms import ChangePasswordForm
+from .search import return_articals
 
+def main():
+    stripe_list = Product.objects.all()
+    return {
+        'articals':return_articals,
+        'product_list': stripe_list,
+    }
 
 @login_required
 def home(request):
-    stripe_list = Product.objects.all()
 
+    factory = main()
     return render(request, 'app/index.html', {
-        'product_list': stripe_list
+        'product_list': factory['product_list'],
+        'articals': factory['articals']
     })
-    # return render(request, 'app/index.html')
 
 
 @login_required
-def reviews(request):
+def notifications(request):
+    factory = main()
+    return render(request, 'app/notifications.html', {
+        'product_list': factory['product_list'],
+        'articals': factory['articals']
+    })
+
+@login_required
+def reviews_list(request):
     stripe_list = Product.objects.all()
 
-    return render(request, 'app/reviews.html', {
+    return render(request, 'app/reviews_list.html', {
         'product_list': stripe_list
     })
 
+@login_required
+def reviews_analysis(request):
+    stripe_list = Product.objects.all()
+
+    return render(request, 'app/reviews_analysis.html', {
+        'product_list': stripe_list
+    })
+
+@login_required
+def business_details(request):
+    stripe_list = Product.objects.all()
+
+    return render(request, 'app/business_details.html', {
+        'product_list': stripe_list
+    })
 
 @login_required
 def settings(request):
@@ -40,10 +70,11 @@ def settings(request):
 
 @login_required
 def profile(request):
+    factory = main()
     user = User.objects.get(id=request.user.id)
     profile = Profile.objects.get(user_id=request.user.id)
     myform = ChangePasswordForm()
-    return render(request, 'app/profile.html', {
+    return render(request, 'app/profile1.html', {
         'first_name': user.first_name,
         'last_name': user.last_name,
         'phone_numer': profile.phone_numer,
@@ -52,9 +83,29 @@ def profile(request):
         'address': profile.address,
         'website': profile.website,
         'form': myform,
+        'product_list': factory['product_list'],
+        'articals': factory['articals']
     })
     # return render(request, 'app/index.html')
 
+@login_required
+def profile_edit_page(request):
+    factory = main()
+    user = User.objects.get(id=request.user.id)
+    profile = Profile.objects.get(user_id=request.user.id)
+    myform = ChangePasswordForm()
+    return render(request, 'app/profile_edit.html', {
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'phone_numer': profile.phone_numer,
+        'country': profile.country,
+        'city': profile.city,
+        'address': profile.address,
+        'website': profile.website,
+        'form': myform,
+        'product_list': factory['product_list'],
+        'articals': factory['articals']
+    })
 
 @login_required
 def plans(request):
@@ -68,10 +119,29 @@ def plans(request):
 
 @login_required
 def accounts(request):
-    stripe_list = Product.objects.all()
+    factory = main()
+    
+    try:
+        tests = test.objects.get(user_id=request.user.id)
+        test_acc = tests.test_acc
+    except:
+        test_acc = 0
+
+    if request.POST:
+        try:
+            tests = test.objects.get(user_id=request.user.id)
+        except:
+            user = User.objects.get(id=request.user.id)
+            test.objects.create( user=user)
+            tests = test.objects.get(user_id=request.user.id)
+        tests.test_acc = 1
+        test_acc = tests.test_acc
+        tests.save()
 
     return render(request, 'app/accounts.html', {
-        'product_list': stripe_list
+        'product_list': factory['product_list'],
+        'articals': factory['articals'],
+        'test_acc':test_acc,
     })
 
 
@@ -79,6 +149,7 @@ def accounts(request):
 def profile_edit(request):
     if request.POST:
         user = User.objects.get(id=request.user.id)
+        
         profile = Profile.objects.get(user_id=request.user.id)
 
         first_name = request.POST['first_name'].strip()

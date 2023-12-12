@@ -1,290 +1,381 @@
-{% extends "base.html" %} {% load static %} {% block head_title %}{{'Ziko Ai |
-Accounts'}}{% endblock %} {% block content %} {% include "component/nav.html" %}
+{% extends "base_app.html" %}
+{% load static %}
+{% block head_title %}{{'Ziko AI'}}{% endblock %} 
+{% block extra_head %}
+<meta name="description" content="Ziko streamlines Google review responses with instant AI assistance, improving the quality of feedback and boosting online visibility effortlessly.">
+{% endblock %} 
+{% block content %}
+{% include "component/left_nav_app.html" %}
+{% include "component/nav_app.html" %}
 
-<div
-  class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px]"
->
-  <div
-    class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke to-stroke/0 absolute left-0 bottom-0"
-  ></div>
-  <div class="container">
-    <div class="-mx-4 flex flex-wrap items-center">
-      <div class="w-full px-4">
-        <div class="text-center">
-          <h1
-            class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px] md:leading-[1.2]"
-          >
-            Accounts
-          </h1>
-          <p class="mb-5 text-base text-body-color"></p>
 
-          <ul class="flex items-center justify-center gap-[10px]">
-            <li></li>
-            <li></li>
-          </ul>
+
+
+<div class="content">
+
+  {% if not test_acc %}
+  <div class="d-flex flex-center content-min-h">
+    <div class="text-center py-9">
+      <img class="img-fluid mb-7 d-dark-none" src="{% static 'main/assets/img/spot-illustrations/2.png' %}" width="470" alt="">
+      <img class="img-fluid mb-7 d-light-none" src="{% static 'main/assets/img/spot-illustrations/dark_2.png' %}" width="470" alt="">
+      <h1 class="text-800 fw-normal mb-5">You have no Business Profiles (Google My Business) associated with Ziko.ai.</h1>
+      <button class="btn btn-primary me-4" type="button" data-bs-toggle="modal" data-bs-target="#addDealModal" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><svg class="svg-inline--fa fa-plus me-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <span class="fas fa-plus me-2"></span> Font Awesome fontawesome.com -->Add account</button>
+    </div>
+  </div>
+  
+  {% else %}
+  <div class="mb-9">
+
+    <div class="d-flex mb-5 " id="scrollspyTables"><span class="fa-stack me-2 ms-n1"><svg class="svg-inline--fa fa-circle fa-stack-2x text-primary" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256z"></path></svg><!-- <i class="fas fa-circle fa-stack-2x text-primary"></i> Font Awesome fontawesome.com --><svg class="svg-inline--fa fa-list fa-inverse fa-stack-1x text-primary-soft" data-fa-transform="shrink-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="" style="transform-origin: 0.5em 0.5em;"><g transform="translate(256 256)"><g transform="translate(0, 0)  scale(0.875, 0.875)  rotate(0 0 0)"><path fill="currentColor" d="M88 48C101.3 48 112 58.75 112 72V120C112 133.3 101.3 144 88 144H40C26.75 144 16 133.3 16 120V72C16 58.75 26.75 48 40 48H88zM480 64C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H192C174.3 128 160 113.7 160 96C160 78.33 174.3 64 192 64H480zM480 224C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H192C174.3 288 160 273.7 160 256C160 238.3 174.3 224 192 224H480zM480 384C497.7 384 512 398.3 512 416C512 433.7 497.7 448 480 448H192C174.3 448 160 433.7 160 416C160 398.3 174.3 384 192 384H480zM16 232C16 218.7 26.75 208 40 208H88C101.3 208 112 218.7 112 232V280C112 293.3 101.3 304 88 304H40C26.75 304 16 293.3 16 280V232zM88 368C101.3 368 112 378.7 112 392V440C112 453.3 101.3 464 88 464H40C26.75 464 16 453.3 16 440V392C16 378.7 26.75 368 40 368H88z" transform="translate(-256 -256)"></path></g></g></svg><!-- <i class="fa-inverse fa-stack-1x text-primary-soft fas fa-list" data-fa-transform="shrink-2"></i> Font Awesome fontawesome.com --></span>
+      <div class="col">
+        <h3 class="mb-1 text-primary position-relative fw-bold"><span class="bg-soft pe-2">Google My Business accounts</span></h3>
+        <p class="mb-0 lh-sm mb-0 text-700">To make use of all Ziko.ai features, make sure you connect your Google My Business account to our toolkit and import you locations.</p>
+      </div>
+      <div class="ml-2">
+        <button class="btn btn-primary me-4" type="button" data-bs-toggle="modal" data-bs-target="#addDealModal" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><svg class="svg-inline--fa fa-plus me-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <span class="fas fa-plus me-2"></span> Font Awesome fontawesome.com -->Add account</button>
+      </div>
+    </div>
+
+    <div>
+
+      <div id="cartTable" data-list="{&quot;valueNames&quot;:[&quot;products&quot;,&quot;color&quot;,&quot;size&quot;,&quot;price&quot;,&quot;quantity&quot;,&quot;total&quot;],&quot;page&quot;:10}">
+        <div class="table-responsive scrollbar mx-n1 px-1">
+          <table class="table fs--1 mb-0 border-top border-200">
+            <thead>
+              <tr>
+                <th class="sort white-space-nowrap align-middle" scope="col" >Account type</th>
+                
+                <th class="sort white-space-nowrap align-middle" scope="col" >Email</th>
+
+                <th class="sort white-space-nowrap align-middle" scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="list" id="cart-table-body">
+              
+              <tr class="cart-table-row btn-reveal-trigger">
+                <td class="color align-middle white-space-nowrap fs--1 text-900" style="padding-left: 0.5rem;">Google My Business </td>
+
+                <!-- <td class="price align-middle text-900 fs--1 fw-semi-bold text-end">$65</td> -->
+                
+                <td class="color align-middle white-space-nowrap fs--1 text-900">abdullahrefatmo@gmail.com</td>
+                <td class="align-middle white-space-nowrap text-end pe-0 ps-3">
+                  <button class="btn btn-sm btn-primary" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#exampleModal" 
+                  aria-haspopup="true" 
+                  aria-expanded="false" 
+                  data-bs-reference="parent" >Add profile</button>
+                  <button class="btn btn-sm text-500 hover-text-600 me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
+                </td>
+              </tr>
+             
+            </tbody>
+          </table>
         </div>
+      </div>
+
+      <div class="card p-3 mb-3 mt-5">
+        <div class="card-body pt-5 pb-0">
+
+            <div class="border-300 mb-4">
+
+                <div class="row gx-3 mb-6 gy-6 gy-sm-3">
+                    <div class="col-12 col-sm-6">
+                        <h4 class="mb-4">Profiles</h4>
+                        
+                    </div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+
+                          <th scope="col">Profile</th>
+                          <th scope="col">Account</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding-left: 0.5rem;">Automaxed</td>
+                          <td>abdullahrefatmo@gmail.com</td>
+                          <td class="align-middle white-space-nowrap text-end pe-0 ps-3">
+                            <button class="btn btn-sm text-500 hover-text-600 me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding-left: 0.5rem;">Demacia</td>
+                          <td>abdullahrefatmo@gmail.com</td>
+                          <td class="align-middle white-space-nowrap text-end pe-0 ps-3">
+                            <button class="btn btn-sm text-500 hover-text-600 me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                </div>
+
+                
+                
+
+            </div>
+
+        </div>
+      </div>
+
+
+      <div class="card p-3 mb-3 mt-5">
+        <div class="card-body pt-5 pb-0">
+
+            <div class="border-300 mb-4">
+
+                <div class="row gx-3 mb-6 gy-6 gy-sm-3">
+                    <div class="col-12 col-sm-6">
+                        <h4 class="mb-4">Business</h4>
+                        
+                    </div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+
+                          <th scope="col">Name</th>
+                          <th scope="col">Profile</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding-left: 0.5rem;">Oneway Lebanese Bakery</td>
+                          <td>Oneway Lebanese Bakery</td>
+                          <td class="align-middle white-space-nowrap text-end pe-0 ps-3">
+                            <button class="btn btn-sm text-500 hover-text-600 me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding-left: 0.5rem;">Automaxed</td>
+                          <td>Automaxed</td>
+                          <td class="align-middle white-space-nowrap text-end pe-0 ps-3">
+                            <button class="btn btn-sm text-500 hover-text-600 me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                </div>
+
+                
+                
+
+            </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% endif  %}
+
+</div>
+
+
+
+<div class="modal fade" id="addDealModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addDealModal" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content bg-100">
+
+      <div class="card flex-column justify-content-center p-3" style=" text-align: center; ">
+        <h5 class="mb-4">Permissions for ZIKO.ai</h5>
+        <p class="mb-4">ZIKO.ai requires access permissions to your business locations in Google Maps. This is required to help you in locations management.</p>
+        <p>In order to give these permissions, check a box when asked for permissions as shown below:</p>
+        <img src="{% static 'main/assets/images/gmb.gif' %}" alt="How to check the right box." class="mb-4">
+        <!-- 
+        data-bs-dismiss="modal" 
+        aria-label="Close" 
+        -->
+        <button class="btn btn-phoenix-secondary w-100 mb-3"   
+        data-bs-toggle="modal" 
+        data-bs-target="#exampleModal" 
+        aria-haspopup="true" 
+        aria-expanded="false" 
+        data-bs-reference="parent" 
+
+        
+        ><svg class="svg-inline--fa fa-google text-danger me-2 fs--1" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512" data-fa-i2svg=""><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg><!-- <span class="fab fa-google text-danger me-2 fs--1"></span> Font Awesome fontawesome.com -->Google My Business</button>
       </div>
     </div>
   </div>
 </div>
 
-<section class="bg-gray-1 pt-20 pb-10 lg:pt-[120px] lg:pb-20">
-  <div class="container">
-    <div class="-mx-4 flex flex-wrap justify-center">
-      <div class="w-full px-4">
-        <div class="-mx-4 flex flex-wrap">
-          <div class="w-full px-4">
-            <div>
-              {% for message in messages %} {% if message.tags == 'success' %}
-              <div class="max-w-7xl mx-auto space-y-6 pb-3">
-                <div class="rounded-md bg-[#C4F9E2] p-4">
-                  <p
-                    class="flex items-center text-sm font-medium text-[#004434]"
-                  >
-                    <span class="pr-3">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle cx="10" cy="10" r="10" fill="#00B078" />
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M14.1203 6.78954C14.3865 7.05581 14.3865 7.48751 14.1203 7.75378L9.12026 12.7538C8.85399 13.02 8.42229 13.02 8.15602 12.7538L5.88329 10.4811C5.61703 10.2148 5.61703 9.78308 5.88329 9.51682C6.14956 9.25055 6.58126 9.25055 6.84753 9.51682L8.63814 11.3074L13.156 6.78954C13.4223 6.52328 13.854 6.52328 14.1203 6.78954Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </span>
-                    {{message}}
-                  </p>
-                </div>
-              </div>
-              {% elif message.tags == 'error' %}
-              <div class="max-w-7xl mx-auto space-y-6 pb-3">
-                <div
-                  class="w-full bg-red-light-6 inline-flex rounded-lg px-[18px] py-4 shadow-[0px_2px_10px_0px_rgba(0,0,0,0.08)]"
-                >
-                  <p
-                    class="flex items-center text-sm font-medium text-[#BC1C21]"
-                  >
-                    <span
-                      class="bg-red mr-3 flex h-5 w-5 items-center justify-center rounded-full"
-                    >
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g clip-path="url(#clip0_961_15656)">
-                          <path
-                            d="M6 0.337494C2.86875 0.337494 0.3375 2.86874 0.3375 5.99999C0.3375 9.13124 2.86875 11.6812 6 11.6812C9.13125 11.6812 11.6813 9.13124 11.6813 5.99999C11.6813 2.86874 9.13125 0.337494 6 0.337494ZM6 10.8375C3.3375 10.8375 1.18125 8.66249 1.18125 5.99999C1.18125 3.33749 3.3375 1.18124 6 1.18124C8.6625 1.18124 10.8375 3.35624 10.8375 6.01874C10.8375 8.66249 8.6625 10.8375 6 10.8375Z"
-                            fill="white"
-                          />
-                          <path
-                            d="M7.725 4.25625C7.55625 4.0875 7.29375 4.0875 7.125 4.25625L6 5.4L4.85625 4.25625C4.6875 4.0875 4.425 4.0875 4.25625 4.25625C4.0875 4.425 4.0875 4.6875 4.25625 4.85625L5.4 6L4.25625 7.14375C4.0875 7.3125 4.0875 7.575 4.25625 7.74375C4.33125 7.81875 4.44375 7.875 4.55625 7.875C4.66875 7.875 4.78125 7.8375 4.85625 7.74375L6 6.6L7.14375 7.74375C7.21875 7.81875 7.33125 7.875 7.44375 7.875C7.55625 7.875 7.66875 7.8375 7.74375 7.74375C7.9125 7.575 7.9125 7.3125 7.74375 7.14375L6.6 6L7.74375 4.85625C7.89375 4.6875 7.89375 4.425 7.725 4.25625Z"
-                            fill="white"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_961_15656">
-                            <rect width="12" height="12" fill="white" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </span>
-                    {{message}}
-                  </p>
-                </div>
-              </div>
-              {% endif %} {% endfor %}
+<div class="modal fade" id="exampleModal"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content bg-100">
 
-              <div class="max-w-7xl mx-auto space-y-6">
-                <div
-                  class="wow fadeInUp p-4 sm:p-8 bg-white shadow sm:rounded-lg"
-                >
-                  <div class="max-w-xl">
-                    <section>
-                      <header>
-                        <h2 class="text-lg font-medium text-gray-900">
-                          Add Account
-                        </h2>
-
-                        <p class="mb-6 mt-1 text-sm text-gray-600">
-                          Add Your Google Business Profile.
-                        </p>
-                      </header>
-
-                      <!--  -->
-                      <div class="mt-6 space-y-6">
-                        <div>
-                          <label
-                            class="mb-1 block font-medium text-sm text-gray-700"
-                            for="first_name"
-                          >
-                            Connect Your Google Business Profile
-                          </label>
-
-                          <p class="mb-3 mt-1 text-sm text-gray-600">
-                            Click the button on the right to display the
-                            accounts that you have access to connect to the
-                            platform.
-                          </p>
-
-                          <a
-                            href=""
-                            class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="w-6 h-6 pr-2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"
-                              />
-                            </svg>
-
-                            <span>{{'Connect Google Business Profile'}}</span>
-                          </a>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-
-                <div
-                  class="wow fadeInUp p-4 sm:p-8 bg-white shadow sm:rounded-lg"
-                >
-                  <div class="">
-                    <section>
-                      <header>
-                        <h2 class="text-lg font-medium text-gray-900">
-                          Accounts Information
-                        </h2>
-
-                        <p class="mb-6 mt-1 text-sm text-gray-600">
-                          Manage your Business's account information.
-                        </p>
-                      </header>
-
-                      <!--  -->
-                      <div
-                        class="overflow-x-auto relative shadow-md sm:rounded-lg"
-                      >
-                        <div
-                          class="overflow-x-auto relative shadow-md sm:rounded-lg"
-                        >
-                          <table class="w-full text-sm text-left text-gray-500">
-                            <thead
-                              class="text-xs text-gray-700 uppercase bg-gray-50"
-                            >
-                              <tr>
-                                <th scope="col" class="py-3 px-6">Email</th>
-                                <th scope="col" class="py-3 px-6">
-                                  Business Name
-                                </th>
-                                <th scope="col" class="py-3 px-6">Status</th>
-                                <th scope="col" class="py-3 px-6">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr class="bg-white border-b">
-                                <td class="py-4 px-6">Support@automaxed.com</td>
-                                <td class="py-4 px-6">Automaxed</td>
-                                <td class="py-4 px-6">Verified</td>
-                                <td class="py-4 px-6">
-                                  <button
-                                    type="submit"
-                                    name="action"
-                                    class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150"
-                                  >
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr class="bg-white border-b">
-                                <td class="py-4 px-6">Support@automaxed.com</td>
-                                <td class="py-4 px-6">Automaxed</td>
-                                <td class="py-4 px-6">Verified</td>
-                                <td class="py-4 px-6">
-                                  <button
-                                    type="submit"
-                                    name="action"
-                                    class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150"
-                                  >
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr class="bg-white border-b">
-                                <td class="py-4 px-6">Support@automaxed.com</td>
-                                <td class="py-4 px-6">Automaxed</td>
-                                <td class="py-4 px-6">Verified</td>
-                                <td class="py-4 px-6">
-                                  <button
-                                    type="submit"
-                                    name="action"
-                                    class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150"
-                                  >
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr class="bg-white border-b">
-                                <td class="py-4 px-6">Support@automaxed.com</td>
-                                <td class="py-4 px-6">Automaxed</td>
-                                <td class="py-4 px-6">Verified</td>
-                                <td class="py-4 px-6">
-                                  <button
-                                    type="submit"
-                                    name="action"
-                                    class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150"
-                                  >
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </div>
+      <div class="card flex-column justify-content-center p-3" style=" text-align: center; ">
+        <h5 class="mb-7 mt-2">Choose profile</h5>
+        <div class=" mb-5">
+          
+          <div class="card d-flex mb-2 pt-3 pb-3" style="flex-direction: row; justify-content: space-around; align-items: center;">
+            <div style="width: 50%;">
+              <p class="mb-0 lh-sm mb-0 text-muted text-700">Oneway Lebanese Bakery</p>
+            </div>
+            <div style="width: 50%;">
+              <button class="btn btn-phoenix-secondary rounded-pill" type="button"
+              data-bs-toggle="modal" 
+              data-bs-target="#OnewayLebaneseBakery" 
+              aria-haspopup="true" 
+              aria-expanded="false" 
+              data-bs-reference="parent" >Choose </button>
+            </div>
+            
+          </div>
+          
+          <div class="card d-flex mb-2 pt-3 pb-3" style="flex-direction: row; justify-content: space-around; align-items: center;">
+            <div style="width: 50%;">
+              <p class="mb-0 lh-sm mb-0 text-muted text-700">Automaxed</p>
+            </div>
+            <div style="width: 50%;">
+              <button class="btn btn-phoenix-secondary rounded-pill" type="button"
+              data-bs-toggle="modal" 
+              data-bs-target="#Automaxed" 
+              aria-haspopup="true" 
+              aria-expanded="false" 
+              data-bs-reference="parent" >Choose </button>
             </div>
           </div>
+
         </div>
+        
+        <div>
+          <button class="btn btn-phoenix-secondary rounded-pill" type="button" data-bs-dismiss="modal"  aria-label="Close" >Close </button>
+        </div>
+
       </div>
     </div>
   </div>
-</section>
+</div>
 
-{% include "component/footer.html" %}
-<!-- ====== Footer Section End -->
 
-<!-- ====== Back To Top Start -->
-<!-- ====== Back To Top Start -->
-<a
-  href="javascript:void(0)"
-  class="back-to-top fixed bottom-8 right-8 left-auto z-[999] hidden h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:bg-dark"
->
-  <span
-    class="mt-[6px] h-3 w-3 rotate-45 border-t border-l border-white"
-  ></span>
-</a>
-<!-- ====== Back To Top End -->
+<div class="modal fade" id="OnewayLebaneseBakery" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="OnewayLebaneseBakery" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-xl  modal-dialog-centered">
+    <div class="modal-content bg-100">
+      
+      <div class="card todo-list h-100">
+        <div class="card-header border-bottom-0 pb-0">
+          <div class="row justify-content-between align-items-center mb-4">
+            <div class="col-auto">
+              <h3 class="text-1100">Select locations you would like to import</h3>
+            </div>
+          </div>
 
-<!-- ====== All Scripts -->
-<script src="{% static 'main/assets/js/main.js' %}"></script>
+        </div>
+
+
+        
+        <form method="post" action="{% url 'accounts' %}" class="">
+          {% csrf_token %} 
+          <div class="card-body py-0 scrollbar to-do-list-body">
+            <div class="d-flex hover-actions-trigger py-3 border-top border-bottom">
+              <input class="form-check-input flex-shrink-0 my-1 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-1" >
+              <div class="row justify-content-between align-items-md-center btn-reveal-trigger border-200 gx-0 flex-1 cursor-pointer" >
+                <div class="col-12 col-md-auto col-xl-12 col-xxl-auto">
+                  <div class="mb-1 mb-md-0 d-flex align-items-center">
+                    <label for="checkbox-todo-1" class="form-check-label mb-1 mb-md-0 mb-xl-1 mb-xxl-0 fs-0 me-2 line-clamp-1 text-900 cursor-pointer">Oneway Lebanese Bakery</label>
+                  </div>
+                </div>
+                <div class="col-12 col-md-auto col-xl-12 col-xxl-auto">
+                  <div class="d-flex lh-1 align-items-center">
+                    <p class="text-700 fs--2 mb-md-0 me-2 me-md-3 me-xl-2 me-xxl-3 mb-0">Lalor, VIC 3075</p>
+                    <p class="text-700 fs--2 mb-md-0 me-2 me-md-3 me-xl-2 me-xxl-3 mb-0">store code: 055949465155545</p>
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <div class="d-flex justify-content-between m-3">
+            <button class="btn btn-phoenix-secondary rounded-pill" type="button" data-bs-dismiss="modal"  aria-label="Close" >Close </button>
+            <button class="btn btn-phoenix-secondary rounded-pill" type="submit"  id="checkBtn">Import selected</button>
+          </div>
+        </form>
+
+
+        <!-- <div class="card-footer border-0"><a class="fw-bold fs--1 mt-4" href="#!"><svg class="svg-inline--fa fa-plus me-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><span class="fas fa-plus me-1"></span> Font Awesome fontawesome.comAdd new task</a></div> -->
+      
+      </div>
+
+
+
+
+      <!-- <div class="card flex-column justify-content-center p-3" >
+        <h4>Select locations you would like to import</h4>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="Automaxed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Automaxed" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-xl  modal-dialog-centered">
+    <div class="modal-content bg-100">
+      
+      <div class="card todo-list h-100">
+        <div class="card-header border-bottom-0 pb-0">
+          <div class="row justify-content-between align-items-center mb-4">
+            <div class="col-auto">
+              <h3 class="text-1100">Select locations you would like to import</h3>
+            </div>
+          </div>
+
+        </div>
+
+
+        
+        <form method="post" action="{% url 'accounts' %}" class="">
+          {% csrf_token %} 
+          <div class="card-body py-0 scrollbar to-do-list-body">
+            <div class="d-flex hover-actions-trigger py-3 border-top border-bottom">
+              <input class="form-check-input flex-shrink-0 my-1 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-1" >
+              <div class="row justify-content-between align-items-md-center btn-reveal-trigger border-200 gx-0 flex-1 cursor-pointer" >
+                <div class="col-12 col-md-auto col-xl-12 col-xxl-auto">
+                  <div class="mb-1 mb-md-0 d-flex align-items-center">
+                    <label for="checkbox-todo-1" class="form-check-label mb-1 mb-md-0 mb-xl-1 mb-xxl-0 fs-0 me-2 line-clamp-1 text-900 cursor-pointer">Automaxed</label>
+                  </div>
+                </div>
+                <div class="col-12 col-md-auto col-xl-12 col-xxl-auto">
+                  <div class="d-flex lh-1 align-items-center">
+                    <p class="text-700 fs--2 mb-md-0 me-2 me-md-3 me-xl-2 me-xxl-3 mb-0">Consoleya 5 El-Fadl st</p>
+                    <p class="text-700 fs--2 mb-md-0 me-2 me-md-3 me-xl-2 me-xxl-3 mb-0">store code: 055949465155656</p>
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <div class="d-flex justify-content-between m-3">
+            <button class="btn btn-phoenix-secondary rounded-pill" type="button" data-bs-dismiss="modal"  aria-label="Close" >Close </button>
+            <button class="btn btn-phoenix-secondary rounded-pill" type="submit"  id="checkBtn">Import selected</button>
+          </div>
+        </form>
+
+
+        <!-- <div class="card-footer border-0"><a class="fw-bold fs--1 mt-4" href="#!"><svg class="svg-inline--fa fa-plus me-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><span class="fas fa-plus me-1"></span> Font Awesome fontawesome.comAdd new task</a></div> -->
+      
+      </div>
+
+
+
+
+      <!-- <div class="card flex-column justify-content-center p-3" >
+        <h4>Select locations you would like to import</h4>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+
 {% endblock content %}

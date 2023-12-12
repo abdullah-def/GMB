@@ -18,6 +18,11 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return str(self.user)
 
+class test(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+    test_acc = models.IntegerField(null=True )
+    def __str__(self) -> str:
+        return str(self.user)
 
 @receiver(user_signed_up, sender=User)
 def create_user_profile(sender, **kwargs):

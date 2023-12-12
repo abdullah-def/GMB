@@ -1,0 +1,186 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block head_title %}{{'Ziko AI'}}{% endblock %} 
+{% block extra_head %}
+<meta name="description" content="Ziko streamlines Google review responses with instant AI assistance, improving the quality of feedback and boosting online visibility effortlessly.">
+{% endblock %} 
+{% block content %}
+{% include "component/left_nav_app.html" %}
+{% include "component/nav_app.html" %}
+
+<div class="content">
+    <nav class="mb-2" aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item">User Profile</li>
+          <li class="breadcrumb-item active">Profile Overview</li>
+        </ol>
+    </nav>
+    <div class="row align-items-center justify-content-between g-3 mb-4">
+        <div class="col-auto">
+          <h2 class="mb-0">Profile </h2>
+        </div>
+
+    </div>
+
+    <div class="card p-3 mb-3">
+        <div class="card-body pt-5 pb-0">
+            <div class="d-flex flex-wrap flex-sm-nowrap">
+                <div class="me-4 mb-4">
+                    <div class="avatar avatar-5xl avatar-bordered ">
+                        {% if user.socialaccount_set.all.0.extra_data.picture %}
+                            <img class="rounded-soft " src="{{user.socialaccount_set.all.0.extra_data.picture}}" alt="">
+                            
+                        {% else %}
+                            <img class="rounded-soft " src="{% static 'accounts/images/User_01.jpg' %}" alt="">
+                            
+                        {% endif %}
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                        <!--begin::User-->
+                        <div class="d-flex flex-column">
+                            <!--begin::Name-->
+                            <div class="d-flex align-items-center mt-2">
+                                <h4>Ansolo Lazinatov</h4>
+                            </div>
+                            <!--end::Name-->
+                            <!--begin::Info-->
+                            <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2 mt-2">
+                                <!-- <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                <i class="ki-outline ki-profile-circle fs-4 me-1"></i>Developer</a> -->
+                                <div class="me-2 d-flex flex-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin text-900 fs-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    <h5 class="text-900 fw-semi-bold flex-1 mb-0"> &nbsp;SF, Bay Areah</h5>
+                                </div>
+                                <div class="me-2 d-flex flex-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                    <h5 class="text-900 fw-semi-bold flex-1 mb-0"> &nbsp;SF, Bay Areah</h5>
+                                </div>
+                            </div>
+                            <!--end::Info-->
+                        </div>
+                        <!--end::User-->
+
+                    </div>
+                    
+                    <div class="d-flex flex-wrap flex-stack">
+                        <!--begin::Wrapper-->
+                        <div class="d-flex flex-column flex-grow-1 pe-8">
+                            <!--begin::Stats-->
+                            <div class="d-flex flex-wrap">
+                                <!--begin::Stat-->
+                                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-2">
+                                    <!--begin::Number-->
+                                    <div class="d-flex align-items-center ">    
+                                        <h5 class="text-900 fw-semi-bold flex-1 mb-1">3500</h5>
+                                    </div>
+                                    <!--end::Number-->
+                                    <!--begin::Label-->
+                                    <h5 class="text-900 fw-semi-bold flex-1 mb-0">Reviews</h5>
+                                    <!--end::Label-->
+                                </div>    
+                                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-2">
+                                    <!--begin::Number-->
+                                    <div class="d-flex align-items-center ">    
+                                        <h5 class="text-900 fw-semi-bold flex-1 mb-1">3500</h5>
+                                    </div>
+                                    <!--end::Number-->
+                                    <!--begin::Label-->
+                                    <h5 class="text-900 fw-semi-bold flex-1 mb-0">Responses</h5>
+                                    <!--end::Label-->
+                                </div>  
+                                                       
+                            </div>
+                            <!--end::Stats-->
+                        </div>
+                        <!--end::Wrapper-->
+                        <!--begin::Progress-->
+                        <div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
+                            <div class="d-flex justify-content-between w-100 mt-auto mb-2">
+                                <h5 class="text-900 fw-semi-bold flex-1 mb-1 me-6" style="white-space: nowrap;">Profile Compleation</h5>
+                                <h5 class="text-900 fw-semi-bold flex-1 mb-1">50%</h5>
+                            </div>
+
+                            <!-- progress bar -->
+                            <div class="progress mb-3" style="height:5px; width: 215px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <!--end::Progress-->
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav nav-underline">
+                <li class="nav-item "><a class="nav-link pe-3 active" href="{% url 'profile' %}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link pe-3" href="{% url 'profile_edit_page' %}">Profile Edit</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card p-3 mb-3">
+        <div class="card-body pt-5 pb-0">
+
+                <div class="d-flex align-items-center mb-5">
+                  <h3>Profile Overview</h3>
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-envelope-alt">  </span>
+                    <h5 class="text-1000 mb-0">Email</h5>
+                  </div><a href="mailto:shatinon@jeemail.com:">ansolo5@jeemail.com</a>
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-phone"> </span>
+                    <h5 class="text-1000 mb-0">Phone</h5>
+                  </div><a href="tel:+1234567890">+1234567890 </a>
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-globe"></span>
+                    <h5 class="text-1000 mb-0">Website</h5>
+                  </div><a href="#!">www.bb.ru.com </a>
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-building"></span>
+                    <h5 class="text-1000 mb-0">Industry</h5>
+                  </div>
+                  <p class="mb-0 text-800">Large Enterprise</p>
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-postcard"></span>
+                    <h5 class="text-1000 mb-0">Number of employees</h5>
+                  </div>
+                  <p class="mb-0 text-800">126</p>
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-dollar-alt"></span>
+                    <h5 class="text-1000 mb-0">Annual Revenue</h5>
+                  </div>
+                  <p class="mb-0 text-800">$12000 </p>
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-clock"></span>
+                    <h5 class="text-1000 mb-0">Last contacted</h5>
+                  </div>
+                  <p class="mb-0 text-800">12 November 2021, 10:54 AM</p>
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-file-check-alt"></span>
+                    <h5 class="text-1000 mb-0">Lead source</h5>
+                  </div>
+                  <p class="mb-0 text-800">Advertisement</p>
+                </div>
+                <div>
+                  <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-check-circle"></span>
+                    <h5 class="text-1000 mb-0">Lead status</h5>
+                  </div><span class="badge badge-phoenix badge-phoenix-primary">New Lead</span>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
