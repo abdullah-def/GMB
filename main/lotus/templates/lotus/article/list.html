@@ -6,27 +6,27 @@
 
 {% block lotus_content %}{% spaceless %}
   <!-- ====== Banner Section Start -->
-  <div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px] dark:bg-dark">
+  <div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px] ">
     <div
-      class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke dark:via-dark-3 to-stroke/0 absolute left-0 bottom-0">
+      class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke  to-stroke/0 absolute left-0 bottom-0">
     </div>
     <div class="container">
       <div class="-mx-4 flex flex-wrap items-center">
         <div class="w-full px-4">
           <div class="text-center">
-            <h1 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
+            <h1 class="mb-4 text-3xl font-bold text-dark  sm:text-4xl md:text-[40px] md:leading-[1.2]">
               Blog</h1>
           
               <ul class="flex items-center justify-center gap-[10px]">
                 <li>
                   <a href="{% url 'home' %}"
-                    class="flex items-center gap-[10px] text-base font-medium text-dark dark:text-white">
+                    class="flex items-center gap-[10px] text-base font-medium text-dark ">
                   Home
                 </a>
               </li>
               <li> 
                 <a href="" class="flex items-center gap-[10px] text-base font-medium text-body-color">
-                  <span class="text-body-color dark:text-dark-6"> / </span>
+                  <span class="text-body-color "> / </span>
                   Blog
                 </a>
               </li>
@@ -39,7 +39,7 @@
   <!-- ====== Banner Section End -->
 
   <!-- ====== Blog Section Start -->
-  <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark">
+  <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 ">
     <div class="container">
       <div class="-mx-4 flex flex-wrap">
         {% for article in article_list %}
@@ -59,12 +59,12 @@
 
                     <h3>
                       <a href="{{ article.get_absolute_url }}"
-                        class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white hover:text-primary dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
+                        class="inline-block mb-4 text-xl font-semibold text-dark  hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
                         {{article.title }}
                       </a>
                     </h3>
                       
-                    {{article.introduction|safe|truncatechars:80|add_class:"max-w-[370px] text-base text-body-color dark:text-dark-6"}}
+                    {{article.introduction|safe|truncatechars:80|add_class:"max-w-[370px] text-base text-body-color "}}
                     
                 </div>
             </div>

@@ -20,27 +20,27 @@
 
 {% block lotus_content %} {% spaceless %} {% translation_siblings article_object as sibling_stats %}
         
-    <div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px] dark:bg-dark">
+    <div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px] ">
         <div
-          class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke dark:via-dark-3 to-stroke/0 absolute left-0 bottom-0">
+          class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke  to-stroke/0 absolute left-0 bottom-0">
         </div>
         <div class="container">
           <div class="-mx-4 flex flex-wrap items-center">
             <div class="w-full px-4">
               <div class="text-center">
-                <h1 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
+                <h1 class="mb-4 text-3xl font-bold text-dark  sm:text-4xl md:text-[40px] md:leading-[1.2]">
                     {{ article_object.title }}</h1>
                 
                 <ul class="flex items-center justify-center gap-[10px]">
                   <li>
                     <a  href="{% url 'lotus:article-index' %}"
-                      class="flex items-center gap-[10px] text-base font-medium text-dark dark:text-white">
+                      class="flex items-center gap-[10px] text-base font-medium text-dark ">
                       Blog
                     </a>
                   </li>
                   <li>
                     <a href="" class="flex items-center gap-[10px] text-base font-medium text-body-color">
-                      <span class="text-body-color dark:text-dark-6"> / </span>
+                      <span class="text-body-color "> / </span>
                       Blog Article
                     </a>
                   </li>
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <section class="pt-10 pb-10 lg:pt-[10px] lg:pb-20 dark:bg-dark">
+    <section class="pt-10 pb-10 lg:pt-[10px] lg:pb-20 ">
         <div class="container">
             <div class="-mx-4 flex flex-wrap justify-center">
               <div class="w-full px-4">
@@ -88,11 +88,11 @@
                 <div class="wow fadeInUp -mx-4 flex flex-wrap">
                     <div class="w-full px-4 lg:w-8/12">
                         <div class="wow fadeInUp introduction">
-                            {{ article_object.introduction|safe|add_class:"text-dark dark:text-white" }}
+                            {{ article_object.introduction|safe|add_class:"text-dark " }}
 
                         </div>
 
-                        <div class="wow fadeInUp content">{{ article_object.content|safe|add_class:"text-dark dark:text-white" }}</div>
+                        <div class="wow fadeInUp content">{{ article_object.content|safe|add_class:"text-dark " }}</div>
 
                         <div style=" padding-top: 30px; ">
                            
@@ -143,7 +143,7 @@
                                                     {% for tag in tags %}
                                                     
                                                     <a href="{% url "lotus:tag-detail" tag=tag.slug %}"
-                                                        class="block rounded-md bg-primary/[0.08] py-[5px] px-[14px] text-base text-dark dark:text-white hover:bg-primary hover:text-white">
+                                                        class="block rounded-md bg-primary/[0.08] py-[5px] px-[14px] text-base text-dark  hover:bg-primary hover:text-white">
                                                         {{ tag.name }}
                                                     </a>
                                                     {% endfor %}
@@ -163,7 +163,7 @@
                             
                             <div class="-mx-4 mb-8 flex flex-wrap">
                                 <div class="w-full px-4">
-                                    <h2 class="wow fadeInUp relative pb-5 text-2xl font-semibold text-dark dark:text-white  sm:text-[28px]"
+                                    <h2 class="wow fadeInUp relative pb-5 text-2xl font-semibold text-dark   sm:text-[28px]"
                                     data-wow-delay=".1s
                                         ">
                                     Latest Articles
@@ -183,7 +183,7 @@
                                             <div class="w-full">
                                                 <h4>
                                                 <a href="{{ article.get_absolute_url }}"
-                                                class="mb-1 inline-block text-lg font-medium leading-snug text-dark dark:text-dark-6 hover:text-primary dark:hover:text-primary lg:text-base xl:text-lg">
+                                                class="mb-1 inline-block text-lg font-medium leading-snug text-dark  hover:text-primary  lg:text-base xl:text-lg">
 
                                                     
         
@@ -216,7 +216,7 @@
             {% if relateds %}
                 <div class="-mx-4 flex flex-wrap">
                     <div class="wow fadeInUp mt-14 w-full px-4" data-wow-delay=".2s">
-                    <h2 class="relative pb-5 text-2xl font-semibold text-dark dark:text-white sm:text-[36px]">
+                    <h2 class="relative pb-5 text-2xl font-semibold text-dark  sm:text-[36px]">
                         Related Articles
                     </h2>
                     <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
@@ -240,7 +240,7 @@
                                     </span>
                                     <h3>
                                         <a href="{{relateds.0.get_absolute_url}}"
-                                        class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white hover:text-primary dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
+                                        class="inline-block mb-4 text-xl font-semibold text-dark  hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
                                         {{relateds.0.title}}
                                         </a>
                                     </h3>
@@ -265,7 +265,7 @@
                                 </span>
                                 <h3>
                                     <a href="{{relateds.1.get_absolute_url}}"
-                                    class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white hover:text-primary dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
+                                    class="inline-block mb-4 text-xl font-semibold text-dark  hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
                                     {{relateds.1.title}}
                                     </a>
                                 </h3>
@@ -290,7 +290,7 @@
                                 </span>
                                 <h3>
                                     <a href="{{relateds.2.get_absolute_url}}"
-                                    class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white hover:text-primary dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
+                                    class="inline-block mb-4 text-xl font-semibold text-dark  hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
                                     {{relateds.2.title}}
                                     </a>
                                 </h3>
@@ -317,7 +317,7 @@
                                     </span>
                                     <h3>
                                         <a href="{{related.get_absolute_url}}"
-                                        class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white hover:text-primary dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
+                                        class="inline-block mb-4 text-xl font-semibold text-dark  hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
                                         {{related.title}}
                                         </a>
                                     </h3>

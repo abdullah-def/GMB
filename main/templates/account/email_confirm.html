@@ -9,15 +9,15 @@
 {% include "component/nav.html" %}
 
 
-<div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px] dark:bg-dark">
+<div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px] ">
     <div
-      class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke dark:via-dark-3 to-stroke/0 absolute left-0 bottom-0">
+      class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke  to-stroke/0 absolute left-0 bottom-0">
     </div>
     <div class="container">
       <div class="-mx-4 flex flex-wrap items-center">
         <div class="w-full px-4">
           <div class="text-center">
-            <h1 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
+            <h1 class="mb-4 text-3xl font-bold text-dark  sm:text-4xl md:text-[40px] md:leading-[1.2]">
                 Confirm Email Address</h1>
 
           </div>
@@ -27,11 +27,11 @@
 </div>
 
 
-<section class="bg-[#F4F7FF] py-14 lg:py-20 dark:bg-dark">
+<section class="bg-[#F4F7FF] py-14 lg:py-20 ">
     <div class="container">
       <div class="-mx-4 flex flex-wrap">
         <div class="w-full px-4">                           
-            <div class="wow fadeInUp p-4 sm:p-8 bg-white shadow sm:rounded-lg dark:bg-dark-2">             
+            <div class="wow fadeInUp p-4 sm:p-8 bg-white shadow sm:rounded-lg ">             
                 <div class="max-w-xl">
                     <section>
                         
@@ -40,7 +40,7 @@
                             {% user_display confirmation.email_address.user as user_display %}
                             {% if can_confirm %}
                                 <header>
-                                    <h2 class="inline-block text-base text-dark dark:text-white">
+                                    <h2 class="inline-block text-base text-dark ">
                                         Confirm Emails Address
                                     </h2>
 
@@ -66,7 +66,7 @@
                         {% else %}
                             {% if  user.emailaddress_set.all.0.verified %} 
                                 <header>
-                                    <h2 class="inline-block text-base text-dark dark:text-white">
+                                    <h2 class="inline-block text-base text-dark ">
                                         Confirm Emails Address
                                     </h2>
                                     <p class="mb-6 mt-1 text-sm text-base text-body-secondary">
@@ -76,7 +76,7 @@
 
                             {% else %}
                                 <header>
-                                    <h2 class="inline-block text-base text-dark dark:text-white">
+                                    <h2 class="inline-block text-base text-dark ">
                                         Confirm Emails Address
                                     </h2>
                                     <p class="mb-6 mt-1 text-sm text-base text-body-secondary">

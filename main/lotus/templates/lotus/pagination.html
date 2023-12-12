@@ -6,13 +6,13 @@
 {% if paginator and paginator.num_pages > 1 %}
     {% if paginator.num_pages < 6 %}
         <div class="text-center mt-8 wow fadeInUp" data-wow-delay=".2s">
-            <div class="inline-flex p-3 bg-white dark:bg-dark-2 border rounded-[10px] border-stroke dark:border-dark-3">
+            <div class="inline-flex p-3 bg-white  border rounded-[10px] border-stroke ">
                 <ul class="-mx-1 flex items-center">
                     {% if page_obj.has_previous %}
                         
                         <li class="px-1">
                             <a href="?page={{ page_obj.previous_page_number  }}"
-                              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
+                              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke  text-body-color  hover:text-white  ">
                               <span>
                                 <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
                                   <path
@@ -29,7 +29,7 @@
 
                         <li class="px-1">
                             <a href="?page={{ page_num }}"
-                              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white" 
+                              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke  text-body-color  hover:text-white  " 
                               {% if page_num == page_obj.number %} style="background-color: #3758F9; color:white" {% endif %}>
                               {{ page_num }}
                             </a>
@@ -40,7 +40,7 @@
                     {% if  page_obj.has_next %}
                         <li class="px-1">
                             <a href="?page={{ page_obj.next_page_number  }}"
-                              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
+                              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke  text-body-color  hover:text-white  ">
                               <span>
                                 <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
                                   <path
@@ -59,12 +59,12 @@
 
     {% if paginator.num_pages > 6 %}
         <div class="text-center mt-8 wow fadeInUp" data-wow-delay=".2s">
-            <div class="inline-flex p-3 bg-white dark:bg-dark-2 border rounded-[10px] border-stroke dark:border-dark-3">
+            <div class="inline-flex p-3 bg-white  border rounded-[10px] border-stroke ">
                 <ul class="-mx-1 flex items-center">
                     {% if page_obj.has_previous %}
                         <li class="px-1">
                             <a href="?page={{ page_obj.previous_page_number  }}"
-                            class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
+                            class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke  text-body-color  hover:text-white  ">
                             <span>
                                 <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
                                 <path
@@ -82,7 +82,7 @@
 
                                 <li class="px-1">
                                     <a href="?page={{ i }}"
-                                      class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white" 
+                                      class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke  text-body-color  hover:text-white  " 
                                       {% if i == page_obj.number %} style="background-color: #3758F9; color:white" {% endif %}>
                                         {{ i }}
                                     </a>
@@ -92,7 +92,7 @@
 
                                     <li class="px-1">
                                         <a 
-                                          class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white" 
+                                          class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke  text-body-color  hover:text-white  " 
                                           >
                                           {{ paginator.ELLIPSIS }}
                                         </a>
@@ -102,7 +102,7 @@
 
                                     <li class="px-1">
                                         <a href="?page={{ i }}"
-                                          class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white" 
+                                          class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke  text-body-color  hover:text-white  " 
                                           >
                                             {{ i }}
                                         </a>
@@ -114,7 +114,7 @@
                     {% if  page_obj.has_next %}
                         <li class="px-1">
                             <a href="?page={{ page_obj.next_page_number  }}"
-                            class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
+                            class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke  text-body-color  hover:text-white  ">
                             <span>
                                 <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
                                 <path

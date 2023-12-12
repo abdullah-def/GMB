@@ -513,16 +513,16 @@ class ChangePasswordForm(PasswordVerificationMixin, UserForm):
     oldpassword = PasswordField(
         label=_("Current Password"), autocomplete="current-password"
     )
-    oldpassword.widget.attrs.update({'class': 'w-full bg-transparent rounded-md border border-stroke dark:border-dark-3 py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2"'})
+    oldpassword.widget.attrs.update({'class': 'w-full bg-transparent rounded-md border border-stroke  py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2"'})
 
     password1 = SetPasswordField(
         label=_("New Password"),
         help_text=password_validation.password_validators_help_text_html(),
     )
-    password1.widget.attrs.update({'class': 'w-full bg-transparent rounded-md border border-stroke dark:border-dark-3 py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2"'})
+    password1.widget.attrs.update({'class': 'w-full bg-transparent rounded-md border border-stroke  py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2"'})
 
     password2 = PasswordField(label=_("New Password (again)"))
-    password2.widget.attrs.update({'class': 'w-full bg-transparent rounded-md border border-stroke dark:border-dark-3 py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2"'})
+    password2.widget.attrs.update({'class': 'w-full bg-transparent rounded-md border border-stroke  py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2"'})
 
     def __init__(self, *args, **kwargs):
         super(ChangePasswordForm, self).__init__(*args, **kwargs)
