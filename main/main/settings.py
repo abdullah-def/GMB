@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'accounts',
     'payment',
     'app',
+    'api',
 
     # The following apps are required:
     'allauth',
@@ -276,12 +277,12 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "Ziko Ai Support <support@ziko.ai>"
 
 # test
-# STRIPE_PUBLISHABLE_KEY = 'pk_test_51MQdxFJTQfFPcbL73Est7Xj7YaIU1WskNRGRkB9wIWjfT3kac90JpPd52orxov0EGKxZGmirY1Cd1iu5DpGkqmWA0063hdAQUd'
-# STRIPE_SECRET_KEY = 'sk_test_51MQdxFJTQfFPcbL7ta7i4KQKW9hneN03pKLGEPWM0ire1UppxL96mZLeuEuLAWyhtqiOirGWF9n0I0txFShZ6TCu00dhtrr89F'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51MQdxFJTQfFPcbL73Est7Xj7YaIU1WskNRGRkB9wIWjfT3kac90JpPd52orxov0EGKxZGmirY1Cd1iu5DpGkqmWA0063hdAQUd'
+STRIPE_SECRET_KEY = 'sk_test_51MQdxFJTQfFPcbL7ta7i4KQKW9hneN03pKLGEPWM0ire1UppxL96mZLeuEuLAWyhtqiOirGWF9n0I0txFShZ6TCu00dhtrr89F'
 
 
-STRIPE_PUBLISHABLE_KEY = 'pk_live_51MQdxFJTQfFPcbL7perO2kRJn906Ol0n56DgKzJwrBmq75tGPcXrVVtLJQGBJrSnaCm93vonAJXBotRNnEczdOuk00MreOVa3Y'
-STRIPE_SECRET_KEY = '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'
+# STRIPE_PUBLISHABLE_KEY = 'pk_live_51MQdxFJTQfFPcbL7perO2kRJn906Ol0n56DgKzJwrBmq75tGPcXrVVtLJQGBJrSnaCm93vonAJXBotRNnEczdOuk00MreOVa3Y'
+# STRIPE_SECRET_KEY = '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'
 
 STRIPE_ENDPOINT_SECRET = 'whsec_xgUzgbB7V0YszaKMsGS2nIAYX6zWl3zf'
 DOMAIN_URL = 'https://www.ziko.ai/'

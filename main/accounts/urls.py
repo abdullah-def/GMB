@@ -25,6 +25,8 @@ urlpatterns = [
     path('team/', views.team, name="team"),
     path('contact/', views.contact, name="contact"),
 
+    path('verified/', views.verified, name="verified"),
+
 
 
 
@@ -36,7 +38,6 @@ urlpatterns = [
     path('knowledgebase/', views.knowledgebase, name="knowledgebase"),
 
     path('ticket/', views.ticket, name="ticket"),
-    path('verification-again/', views.verification_email,
-         name='Verification-again'),
+    path('verification-again/', views.verification_email, name='Verification-again'),
     path('accounts/', include('allauth.urls')),
 ]

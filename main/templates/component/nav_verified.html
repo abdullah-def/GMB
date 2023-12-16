@@ -1,0 +1,184 @@
+{% load static %}
+<nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault">
+    <div class="collapse navbar-collapse justify-content-between">
+
+      <div class="navbar-logo">
+        <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+        <a class="navbar-brand me-1 me-sm-3" href="{% url 'app' %}">
+          <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center"><img src="{% static 'main/assets/img/icons/logo.png' %}" alt="Ziko" width="27">
+              <p class="logo-text ms-2 d-none d-sm-block">ZIKO</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:25rem;">
+
+        <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
+          <input class="form-control search-input fuzzy-search rounded-pill form-control-sm" type="search" placeholder="Search..." aria-label="Search">
+          <span class="fas fa-search search-box-icon"></span>
+        </form>
+
+        <!-- close -->
+        <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none" data-bs-dismiss="search">
+            <button class="btn btn-link btn-close-falcon p-0" aria-label="Close"></button>
+        </div>
+
+        <!-- search list -->
+        <div class="dropdown-menu border border-300 font-base start-0 py-0 overflow-hidden w-100">
+          <div class="scrollbar-overlay" style="max-height: 30rem;">
+            <div class="list pb-3">
+                
+                <h6 class="dropdown-header text-1000 fs--1 border-bottom border-200 py-2 lh-sm">Last Articals</h6>
+                <div class="py-2">
+                {% for article in articals %}
+                  <a class="dropdown-item" href="{{ article.get_absolute_url }}">
+                    <div class="d-flex align-items-center">
+                      <div class="fw-normal text-1000 title"><span class="fa-solid fa-link text-900" data-fa-transform="shrink-2"></span> {{article.title|truncatechars:50 }}</div>
+                    </div>
+                  </a>
+                {% endfor %}
+                </div>
+
+                <hr class="text-200 my-0">
+                <h6 class="dropdown-header text-1000 fs--1 border-bottom border-200 py-2 lh-sm">Quick Links</h6>
+                <div class="py-2">
+
+                    <a class="dropdown-item" href="{% url 'How-it-works' %}">
+                    <div class="d-flex align-items-center">
+                        <div class="fw-normal text-1000 title"> <span class="fa-solid fa-link text-900" data-fa-transform="shrink-2"></span> How it works</div>
+                    </div>
+                    </a>
+
+                    <a class="dropdown-item" href="{% url 'privacy-policy' %}">
+                        <div class="d-flex align-items-center">
+                            <div class="fw-normal text-1000 title"> <span class="fa-solid fa-link text-900" data-fa-transform="shrink-2"></span> Privacy policy</div>
+                        </div>
+                    </a>
+
+                    <a class="dropdown-item" href="{% url 'terms-of-service' %}">
+                        <div class="d-flex align-items-center">
+                            <div class="fw-normal text-1000 title"> <span class="fa-solid fa-link text-900" data-fa-transform="shrink-2"></span> Terms of Service</div>
+                        </div>
+                    </a>
+
+                    <a class="dropdown-item" href="{% url 'refund-policy' %}">
+                        <div class="d-flex align-items-center">
+                            <div class="fw-normal text-1000 title"> <span class="fa-solid fa-link text-900" data-fa-transform="shrink-2"></span> Refund policy</div>
+                        </div>
+                    </a>
+
+                    <a class="dropdown-item" href="{% url 'knowledgebase' %}">
+                        <div class="d-flex align-items-center">
+                            <div class="fw-normal text-1000 title"> <span class="fa-solid fa-link text-900" data-fa-transform="shrink-2"></span> Knowledgebase</div>
+                        </div>
+                    </a>
+
+                    <a class="dropdown-item" href="{% url 'about' %}">
+                        <div class="d-flex align-items-center">
+                            <div class="fw-normal text-1000 title"> <span class="fa-solid fa-link text-900" data-fa-transform="shrink-2"></span> About US</div>
+                        </div>
+                    </a>
+
+                    <a class="dropdown-item" href="{% url 'contact' %}">
+                        <div class="d-flex align-items-center">
+                            <div class="fw-normal text-1000 title"> <span class="fa-solid fa-link text-900" data-fa-transform="shrink-2"></span> Contact Us</div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="text-center">
+              <p class="fallback fw-bold fs-1 d-none">No Result Found.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <ul class="navbar-nav navbar-nav-icons flex-row">
+        
+        <li class="nav-item">
+          <div class="theme-control-toggle fa-icon-wait px-2"><input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle"><label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="moon"></span></label><label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label></div>
+        </li>
+
+
+
+
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+            <div class="avatar avatar-l ">
+                {% if user.socialaccount_set.all.0.extra_data.picture %}
+                    <img class="rounded-circle " src="{{user.socialaccount_set.all.0.extra_data.picture}}" alt="">
+                     
+                {% else %}
+                    <img class="rounded-circle " src="{% static 'accounts/images/User_01.jpg' %}" alt="">
+                    
+                {% endif %}
+              
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">
+            <div class="card position-relative border-0">
+              <div class="card-body p-0">
+                <div class="text-center pt-4 pb-3">
+                  <div class="avatar avatar-xl ">
+                    {% if user.socialaccount_set.all.0.extra_data.picture %}
+                        <img class="rounded-circle " src="{{user.socialaccount_set.all.0.extra_data.picture}}" alt="">
+                     
+                    {% else %}
+                        <img class="rounded-circle " src="{% static 'accounts/images/User_01.jpg' %}" alt="">
+                        
+                    {% endif %}
+                  </div>
+                  <h6 class="mt-2 text-black">{{user.first_name}} {{user.last_name}}</h6>
+                </div>
+                <!-- <div class="mb-3 mx-3">
+                    <input class="form-control form-control-sm" id="statusUpdateInput" type="text" placeholder="Update your status">
+                </div> -->
+              </div>
+
+              <div class="overflow-auto scrollbar" style="height: 10rem;">
+                <ul class="nav d-flex flex-column mb-2 pb-1">
+                  <li class="nav-item"><a class="nav-link px-3" href="{% url 'profile' %}"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="{% url 'app' %}"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="{% url 'settings' %}"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="{% url 'contact' %}"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>
+                </ul>
+              </div>
+
+              <div class="card-footer p-0 border-top">
+                <!-- <ul class="nav d-flex flex-column my-3">
+                  <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="user-plus"></span>Add another account</a></li>
+                </ul> 
+                <hr>-->
+                <div class="px-3 pt-3"> 
+                    <form method="post" action="{% url 'account_logout' %}" class="">
+                        {% csrf_token %} 
+                        {% if redirect_field_value %}
+                            <input
+                            type="hidden"
+                            name="{{ redirect_field_name }}"
+                            value="{{ redirect_field_value }}"/>
+                        {% endif %}
+                        <button type="submit" class="btn btn-phoenix-secondary d-flex flex-center w-100">
+                            <span class="me-2" data-feather="log-out"> 
+
+                            </span>
+                            Sign out
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="my-2 text-center fw-bold fs--2 text-600"><a class="text-600 me-1" href="{% url 'privacy-policy' %}">Privacy policy</a>&bull;<a class="text-600 mx-1" href="{% url 'terms-of-service' %}">Terms</a></div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+</nav>

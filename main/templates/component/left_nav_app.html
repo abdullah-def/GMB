@@ -52,31 +52,22 @@
                 <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-components">
                   
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'accounts' %}" data-bs-toggle="" aria-expanded="false">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'accounts' %}active{% endif %}" href="{% url 'accounts' %}" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Accounts</span></div>
                     </a><!-- more inner pages-->
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'reviews_list' %}" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Reviews list</span></div>
+                    <a class="nav-link {% if request.resolver_match.url_name == 'reviews' %}active{% endif %}" href="{% url 'reviews' %}" data-bs-toggle="" aria-expanded="false">
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Reviews</span></div>
                     </a>
                   </li>
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'reviews_analysis' %}" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Reviews Analysis</span></div>
-                    </a>
-                  </li>
+
+                 
 
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'business_details' %}" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Business Details</span></div>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'settings' %}" data-bs-toggle="" aria-expanded="false">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'settings' %}active{% endif %}" href="{% url 'settings' %} " data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Settings</span></div>
                     </a>
                   </li>
@@ -92,6 +83,32 @@
             <p class="navbar-vertical-label">Profile</p>
             <hr class="navbar-vertical-line"><!-- parent pages-->
 
+            <div class="nav-item-wrapper">
+              <a class="nav-link dropdown-indicator label-1" href="#nv-project-management" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-project-management">
+                <div class="d-flex align-items-center">
+                  <div class="dropdown-indicator-icon">
+                    <span class="fas fa-caret-right"></span>
+                  </div>
+                  <span class="nav-link-icon">
+                    <span data-feather="users"></span>
+                  </span>
+                  <span class="nav-link-text">Profile</span>
+                </div>
+              </a>
+              <div class="parent-wrapper label-1">
+                <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-project-management">
+                  <li class="collapsed-nav-item-title d-none">Profile</li>
+                  <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}" data-bs-toggle="" aria-expanded="false">
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Profile Overview</span></div>
+                    </a><!-- more inner pages-->
+                  </li>
+                  <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'profile_edit_page' %}active{% endif %}" href="{% url 'profile_edit_page' %}" data-bs-toggle="" aria-expanded="false">
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Profile Edit</span></div>
+                    </a><!-- more inner pages-->
+                  </li>
+                </ul>
+              </div>
+            </div>
             
           </li>
           

@@ -1,21 +1,33 @@
 from django.shortcuts import render, redirect
 from allauth.account.models import EmailAddress
 from allauth.account.utils import send_email_confirmation
-from payment.models import Product, StripeCustomer
-from django.http.response import JsonResponse
-import stripe
-from django.conf import settings
-from datetime import datetime
-from lotus.models import Article
 
-from django.conf import settings
+from payment.models import Product
+from lotus.models import Article
+from app.search import return_articals
 from django.core.mail import send_mail
 # Create your views here.
 
+def main():
+    stripe_list = Product.objects.all()
+    return {
+        'articals':return_articals,
+        'product_list': stripe_list,
+    }
+
 
 def home(request):
+    
     if request.user.is_authenticated:
-        return redirect('app')
+        if request.user.emailaddress_set.get().verified:
+            return redirect('app')
+        else:
+            factory = main()
+            return render(request, 'app/verified.html',{
+            'product_list': factory['product_list'],
+            'articals': factory['articals']
+            })
+
     else:
         stripe_list = Product.objects.all()
         artical = Article.objects.all()[:3]
@@ -24,6 +36,10 @@ def home(request):
             'product_list': stripe_list,
             'article_list':artical
         })
+
+
+def verified(request):
+    return render(request, 'main/verified.html')
 
 def features(request):
     return render(request, 'main/features.html')

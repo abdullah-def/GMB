@@ -38,7 +38,7 @@ def create_checkout_session(request):
                 mode='subscription',
                 line_items=[
                     {
-                        'price': request.POST['pricelist'],
+                        'price': request.POST['price_list'],
                         'quantity': 1,
                     }
                 ]

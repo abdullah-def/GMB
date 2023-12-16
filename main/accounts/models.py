@@ -18,9 +18,10 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return str(self.user)
 
-class test(models.Model):
+class tests(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-    test_acc = models.IntegerField(null=True )
+    test_acc = models.IntegerField(null=True)
+    
     def __str__(self) -> str:
         return str(self.user)
 

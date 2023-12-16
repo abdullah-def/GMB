@@ -8,7 +8,157 @@
 {% include "component/left_nav_app.html" %}
 {% include "component/nav_app.html" %}
 
-{% include "app/test2.html" %}
+<div class="content">
 
+    <div class="mb-9">
+        <div class="row g-6">
+          <div class="col-12 col-xl-4">
+            <div class="card mb-5">
+
+              <div class="card-header hover-actions-trigger position-relative mb-6" style="min-height: 130px; ">
+                <div class="bg-holder rounded-top" style="background-image: linear-gradient(0deg, #000000 -3%, rgba(0, 0, 0, 0) 83%), url({% static 'main/assets/img/generic/59.png' %})">
+                    
+                </div><input class="d-none" id="upload-settings-porfile-picture" type="file">
+                <label class="avatar avatar-4xl  feed-avatar-profile cursor-pointer" for="upload-settings-porfile-picture">
+                   
+                    {% if user.socialaccount_set.all.0.extra_data.picture %}
+
+                        <img class="rounded-circle img-thumbnail bg-white shadow-sm" src="{{user.socialaccount_set.all.0.extra_data.picture}}" width="200" alt="">
+                    {% else %}
+
+                        <img class="rounded-circle img-thumbnail bg-white shadow-sm" src="{% static 'accounts/images/User_01.jpg' %}" width="200" alt="">
+                        
+                    {% endif %}
+              
+                </label>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="d-flex flex-wrap mb-2 align-items-center">
+                      <h3 class="me-2">{{user.first_name}} {{user.last_name}}</h3>
+                    </div>
+                    <div class="d-flex d-xl-block d-xxl-flex align-items-center">
+                      <div class="d-flex mb-xl-2 mb-xxl-0">
+                        <h6 class="d-inline-block mb-0">{{user.email}}</h6>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <h6 class="text-500 mb-3">Note: These settings are for Oneway Lebanese Bakery business</h6>
+            <div class="border-bottom border-dashed pb-3 mb-4">
+              <h5 class="text-900 mb-3">Settings for responding to reviews</h5>
+              <div class="form-check form-switch"><input class="form-check-input" id="showPhone" type="checkbox" checked="checked" name="showPhone"><label class="form-check-label fs-0" for="showPhone">Respond to all reviews automatically</label></div>
+              <div class="form-check form-switch"><input class="form-check-input" id="permitFollow" type="checkbox"  name="permitFollow"><label class="form-check-label fs-0" for="permitFollow">Stop responding to reviews that are less than 4 stars</label></div>
+              <div class="form-check form-switch"><input class="form-check-input" id="permitFollow" type="checkbox"  name="permitFollow"><label class="form-check-label fs-0" for="permitFollow">Stop responding to reviews that are less than 3 stars</label></div>
+              <div class="form-check form-switch"><input class="form-check-input" id="permitFollow" type="checkbox"  name="permitFollow"><label class="form-check-label fs-0" for="permitFollow">Stop responding to reviews that are less than 2 stars</label></div>
+              <div class="form-check form-switch"><input class="form-check-input" id="permitFollow" type="checkbox"  name="permitFollow"><label class="form-check-label fs-0" for="permitFollow">Stop responding to reviews that are less than 1 stars</label></div>
+            </div>
+
+            <div class="border-bottom border-dashed pb-3 mb-4">
+              <h5 class="text-900 mb-3">for test</h5>
+              <div class="form-check"><input class="form-check-input" id="tagGroupMembers" type="radio" checked="checked" name="tagPermission"><label class="form-check-label fs-0" for="tagGroupMembers">for test</label></div>
+              <div class="form-check"><input class="form-check-input" id="tagEveryone" type="radio" name="tagPermission"><label class="form-check-label fs-0" for="tagEveryone">for test</label></div>
+            </div>
+            <div class="mb-4">
+              <div class="form-check"><input class="form-check-input" id="showEmail" type="checkbox" name="showEmail"><label class="form-check-label fs-0" for="showEmail">for test</label></div>
+              <div class="form-check"><input class="form-check-input" id="showExperiences" type="checkbox" name="showExperiences"><label class="form-check-label fs-0" for="showExperiences">for test</label></div>
+              <div class="form-check"><input class="form-check-input" id="showFollowers" type="checkbox" checked="checked" name="showFollowers"><label class="form-check-label fs-0" for="showFollowers">for test</label></div>
+            </div>
+            
+          </div>
+
+          <div class="col-12 col-xl-8">
+            <div class="border-bottom border-300 mb-4">
+              <div class="mb-6">
+                <h4 class="mb-2">Business Information</h4>
+                <h6 class="text-600 mb-4" style="max-width: 500px;">Please note that, this information will be used by artificial intelligence so that it is aware of the company’s activity and can give better responses</h6>
+                <div class="row g-3">
+                  <div class="col-12 col-sm-6">
+                    <div class="form-icon-container">
+                        <div class="form-floating"><input class="form-control " id="lastName" type="text" placeholder="Last Name"><label class="text-700 " for="lastName">BUSINESS NAME</label></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="form-icon-container">
+                      <div class="form-floating"><input class="form-control " id="lastName" type="text" placeholder="Last Name"><label class="text-700 " for="lastName">BUSINESS WEBSITE</label></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="form-icon-container">
+                        <div class="form-floating"><input class="form-control " id="lastName" type="text" placeholder="Last Name"><label class="text-700 " for="lastName">BUSINESS ADDRESS</label></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="form-icon-container">
+                        <div class="form-floating"><input class="form-control " id="lastName" type="text" placeholder="Last Name"><label class="text-700 " for="lastName">BUSINESS PHONE</label></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="form-icon-container">
+                        <div class="form-floating"><input class="form-control " id="lastName" type="text" placeholder="Last Name"><label class="text-700 " for="lastName">BUSINESS EMAIL</label></div>
+                    </div>
+                  </div>
+
+                  
+
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <div class="row g-3">
+                  <h4 class="mb-3">Business details</h4>
+               
+
+                    <div class="col-12 col-sm-6">
+                        <div class="form-icon-container">
+                            <div class="form-floating"><input class="form-control " id="lastName" type="text" placeholder="Last Name"><label class="text-700 " for="lastName">BUSINESS industry</label></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-icon-container">
+                        <div class="form-floating"><input class="form-control " id="lastName" type="text" placeholder="Last Name"><label class="text-700 " for="lastName">NUMBER OF EMPLOYEES</label></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-icon-container">
+                            <div class="form-floating"><input class="form-control " id="lastName" type="text" placeholder="Last Name"><label class="text-700 " for="lastName">BASIC PRODUCT</label></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-icon-container">
+                            <div class="form-floating"><textarea class="form-control " id="info" style="height: 130px;" placeholder="Info"></textarea><label class="text-700" for="info">Description about the BUSINESS</label></div>
+                        </div>
+                    </div>
+
+                  
+                </div>
+               
+              </div>
+             
+              <div class="text-end mb-6">
+                <div><button class="btn btn-phoenix-secondary me-2">Cancel Changes</button><button class="btn btn-phoenix-primary">Save Information</button></div>
+              </div>
+            </div>
+            <div class="row gy-5">
+              <div class="col-12 col-md-6">
+                <h4 class="text-black">Transfer Ownership</h4>
+                <p class="text-700">Transfer this account to another person or to a company repository.</p><button class="btn btn-phoenix-warning">Transfer</button>
+              </div>
+              <div class="col-12 col-md-6">
+                <h4 class="text-black">Account Deletion</h4>
+                <p class="text-700">Transfer this account to another person or to a company repository.</p><button class="btn btn-phoenix-danger">Delete account</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
 
 {% endblock content %}

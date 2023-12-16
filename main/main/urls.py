@@ -12,6 +12,8 @@ urlpatterns = [
     path('app/', include('app.urls')),
     path('payment/', include('payment.urls')),
     path("blog/", include("lotus.urls"), name="blog"),
+    path("api/", include("api.urls")),
+
 
 
 ]
